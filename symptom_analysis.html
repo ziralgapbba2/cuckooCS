@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품별 문의내용 증상 분석</title>
+    
+    <!-- 
+    ====================================================================
+    리팩토링 버전 - 외부 JSON 데이터 로딩
+    ====================================================================
+    파일 구조:
+    📁 dashboard/
+      ├── symptom_analysis.html  (이 파일)
+      ├── chart.umd.js
+      ├── manifest.json
+      └── 📁 data/
+          ├── 2026-01-symptom.json
+          └── ...
+    ====================================================================
+    -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", "Segoe UI", sans-serif;
+            background: #FFFFFF;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .main-nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #EEF2F8;
+            flex-wrap: wrap;
+        }
+        .nav-button {
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 2px solid #A8BFFF;
+            background: white;
+            color: #A8BFFF;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .nav-button:hover {
+            background: #A8BFFF;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(160, 185, 255, 0.3);
+        }
+        .nav-button.active {
+            background: #A8BFFF;
+            color: white;
+            box-shadow: 0 4px 12px rgba(160, 185, 255, 0.3);
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #A8BFFF;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #8896AD;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        /* ===== 기간 선택 ===== */
+        .period-selector-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #F0F4FF 0%, #E8EEFF 100%);
+            border-radius: 12px;
+            border: 2px solid #D5E0FF;
+        }
+        .period-selector-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #8B90E8;
+        }
+        .period-selector {
+            padding: 10px 36px 10px 16px;
+            border-radius: 8px;
+            border: 2px solid #C0CCFF;
+            background: white;
+            font-size: 15px;
+            font-weight: 600;
+            color: #3A4A5E;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234338CA' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            transition: all 0.2s;
+        }
+        .period-selector:hover { border-color: #A8BFFF; box-shadow: 0 2px 8px rgba(160, 185, 255, 0.2); }
+        .period-selector:focus { outline: none; border-color: #A8BFFF; box-shadow: 0 0 0 3px rgba(160, 185, 255, 0.15); }
+        .period-info { font-size: 13px; color: #A8AAFF; font-weight: 500; }
+
+        /* ===== 로딩/에러 ===== */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .loading-overlay.show { display: flex; }
+        .loading-spinner {
+            width: 48px; height: 48px;
+            border: 4px solid #EDF0F5;
+            border-top-color: #A8BFFF;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { font-size: 16px; font-weight: 600; color: #A8BFFF; }
+        .error-banner {
+            display: none;
+            padding: 16px 24px;
+            background: #FFEEEE;
+            border: 2px solid #FFC0CB;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            color: #CC7070;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .error-banner.show { display: block; }
+
+        /* 로컬 파일 직접 로딩 패널 */
+        .file-fallback {
+            display: none;
+            padding: 24px;
+            background: linear-gradient(135deg, #FFFDF5 0%, #FFF8E1 100%);
+            border: 2px solid #FFCF7A;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+        .file-fallback.show { display: block; }
+        .file-fallback h3 { font-size: 16px; font-weight: 700; color: #7A5A3C; margin-bottom: 8px; }
+        .file-fallback p { font-size: 13px; color: #6B4F35; margin-bottom: 16px; line-height: 1.6; }
+        .file-fallback .fb-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+        .file-fallback .fb-label { font-size: 13px; font-weight: 700; color: #7A5A3C; min-width: 120px; }
+        .file-fallback .fb-btn {
+            padding: 8px 20px; border-radius: 8px; border: 2px solid #F0B84A;
+            background: white; color: #7A5A3C; font-weight: 600; font-size: 13px;
+            cursor: pointer; font-family: inherit; transition: all 0.2s;
+        }
+        .file-fallback .fb-btn:hover { background: #FFF8DC; }
+        .file-fallback .fb-btn.loaded { background: #C8F5E0; border-color: #5DC9A5; color: #1A7A5E; }
+        .file-fallback .fb-status { font-size: 12px; color: #5DC9A5; font-weight: 600; }
+        .file-fallback input[type="file"] { display: none; }
+
+        .data-source {
+            color: #7DD3B0;
+            background: #C8F5E0;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+        .badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .badge {
+            font-size: 13px;
+            color: #5DC9A5;
+            background: #C8F5E0;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .product-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .product-tab {
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid;
+            transition: all 0.3s;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .stat-label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: 800;
+        }
+        .stat-sub {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .selected-symptom {
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid;
+            margin-bottom: 32px;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+        .chart-section {
+            margin-bottom: 32px;
+        }
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .chart-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2E404E;
+        }
+        .chart-header p {
+            font-size: 13px;
+            color: #8896A8;
+            margin-top: 4px;
+        }
+        .top-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .top-button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        .top-button.active {
+            background: #A8BFFF;
+            color: white;
+        }
+        .top-button:not(.active) {
+            background: #EBEDf2;
+            color: #4A5C6E;
+        }
+        .top-button:hover:not(.active) {
+            background: #D8DCEA;
+        }
+        .chart-container {
+            background: #F7F9FB;
+            border-radius: 12px;
+            padding: 24px;
+            height: 600px;
+        }
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        .symptom-card {
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .symptom-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .symptom-card.selected {
+            background: #EBF0FF !important;
+        }
+        .symptom-rank {
+            font-size: 24px;
+            font-weight: 800;
+        }
+        .symptom-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2E404E;
+            margin-left: 8px;
+        }
+        .symptom-count {
+            font-size: 24px;
+            font-weight: 800;
+            margin-top: 12px;
+        }
+        .symptom-percent {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 12px;
+            background: white;
+            display: inline-block;
+            margin-top: 12px;
+        }
+        .close-button {
+            padding: 10px 20px;
+            background: #EBEDf2;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .close-button:hover {
+            background: #D8DCEA;
+        }
+        .month-filter-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #86EFAC;
+            background: white;
+            color: #166534;
+            transition: all 0.2s;
+        }
+        .month-filter-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .month-filter-btn.active {
+            background: #22C55E;
+            color: white;
+            border-color: #22C55E;
+        }
+        /* ===== 유사어 통합 패널 ===== */
+        .consolidation-panel {
+            margin-bottom: 24px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+            border: 2px solid #FB923C;
+            border-radius: 16px;
+        }
+        .consolidation-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .consolidation-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .consolidation-title h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #9A3412;
+            margin: 0;
+        }
+        .consolidation-title .info-text {
+            font-size: 12px;
+            color: #C2410C;
+            font-weight: 500;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 52px;
+            height: 28px;
+            cursor: pointer;
+        }
+        .toggle-switch input { display: none; }
+        .toggle-slider {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #D8DCEA;
+            border-radius: 28px;
+            transition: 0.3s;
+        }
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 22px; height: 22px;
+            left: 3px; bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .toggle-switch input:checked + .toggle-slider {
+            background: #F97316;
+        }
+        .toggle-switch input:checked + .toggle-slider::before {
+            transform: translateX(24px);
+        }
+        .consolidation-stats {
+            display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed #FDBA74;
+        }
+        .consolidation-stats.show { display: block; }
+        .cons-stats-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .cons-stat-item {
+            background: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: 1px solid #FDBA74;
+        }
+        .cons-stat-item .label { font-size: 11px; color: #9A3412; font-weight: 600; }
+        .cons-stat-item .value { font-size: 20px; font-weight: 800; color: #EA580C; }
+        .merge-log {
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #FDBA74;
+            padding: 12px 16px;
+            font-size: 12px;
+            line-height: 1.8;
+            color: #6B4F35;
+        }
+        .merge-log .merge-item {
+            padding: 3px 0;
+            border-bottom: 1px solid #FFF8DC;
+        }
+        .merge-log .merge-item:last-child { border-bottom: none; }
+        .merge-log .merged-from {
+            color: #FF9F9F;
+            text-decoration: line-through;
+            margin-right: 4px;
+        }
+        .merge-log .merged-to {
+            color: #5DC9A5;
+            font-weight: 700;
+        }
+        .merge-log .merged-count {
+            color: #8896A8;
+            font-size: 11px;
+        }
+        .cons-expand-btn {
+            padding: 6px 16px;
+            border-radius: 6px;
+            border: 1px solid #FDBA74;
+            background: white;
+            color: #9A3412;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cons-expand-btn:hover { background: #FFF7ED; }
+
+        /* ===== 동의어 사전 편집기 ===== */
+        .dict-editor {
+            display: none;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 2px dashed #FDBA74;
+        }
+        .dict-editor.show { display: block; }
+        .dict-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .dict-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dict-toolbar-right {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .dict-btn {
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1.5px solid;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .dict-btn:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .dict-btn-primary { background: #F97316; border-color: #F97316; color: white; }
+        .dict-btn-primary:hover { background: #EA580C; }
+        .dict-btn-secondary { background: white; border-color: #D8DCEA; color: #4A5C6E; }
+        .dict-btn-secondary:hover { background: #F7F9FB; }
+        .dict-btn-danger { background: white; border-color: #FFC0CB; color: #FF9F9F; }
+        .dict-btn-danger:hover { background: #FFEEEE; }
+        .dict-btn-success { background: #5DC9A5; border-color: #5DC9A5; color: white; }
+        .dict-btn-success:hover { background: #2E9E75; }
+        .dict-search {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1.5px solid #D8DCEA;
+            font-size: 13px;
+            width: 220px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .dict-search:focus { outline: none; border-color: #F97316; box-shadow: 0 0 0 3px rgba(249,115,22,0.1); }
+        .dict-group-list {
+            max-height: 500px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .dict-group {
+            background: white;
+            border: 1.5px solid #EBEDf2;
+            border-radius: 12px;
+            padding: 14px 18px;
+            transition: all 0.2s;
+        }
+        .dict-group:hover { border-color: #F97316; box-shadow: 0 2px 8px rgba(249,115,22,0.08); }
+        .dict-group-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .dict-canonical {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2E404E;
+        }
+        .dict-group-actions {
+            display: flex;
+            gap: 4px;
+            opacity: 0.4;
+            transition: opacity 0.2s;
+        }
+        .dict-group:hover .dict-group-actions { opacity: 1; }
+        .dict-action-btn {
+            width: 28px; height: 28px;
+            border-radius: 6px;
+            border: 1px solid #EBEDf2;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+        }
+        .dict-action-btn:hover { background: #F2F4F8; }
+        .dict-action-btn.danger:hover { background: #FFEEEE; border-color: #FFC0CB; }
+        .dict-variants {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .dict-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            background: #FFF7ED;
+            border: 1px solid #FDBA74;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #9A3412;
+        }
+        .dict-tag-remove {
+            cursor: pointer;
+            color: #FF9F9F;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1;
+            opacity: 0.5;
+            transition: opacity 0.15s;
+        }
+        .dict-tag-remove:hover { opacity: 1; }
+        .dict-count-badge {
+            font-size: 11px;
+            color: #8896A8;
+            background: #F2F4F8;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 6px;
+        }
+
+        /* 모달 */
+        .dict-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        .dict-modal-overlay.show { display: flex; }
+        .dict-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            width: 90%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        .dict-modal h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2E404E;
+            margin-bottom: 20px;
+        }
+        .dict-form-group {
+            margin-bottom: 16px;
+        }
+        .dict-form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4A5C6E;
+            margin-bottom: 6px;
+        }
+        .dict-form-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #D8DCEA;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .dict-form-input:focus { outline: none; border-color: #F97316; box-shadow: 0 0 0 3px rgba(249,115,22,0.1); }
+        .dict-form-textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #D8DCEA;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: inherit;
+            min-height: 100px;
+            resize: vertical;
+            line-height: 1.8;
+        }
+        .dict-form-textarea:focus { outline: none; border-color: #F97316; box-shadow: 0 0 0 3px rgba(249,115,22,0.1); }
+        .dict-form-help {
+            font-size: 11px;
+            color: #B2BAC8;
+            margin-top: 4px;
+        }
+        .dict-modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #EBEDf2;
+        }
+        .dict-summary {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .dict-summary-item {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8896A8;
+        }
+        .dict-summary-item b {
+            color: #F97316;
+            font-size: 16px;
+        }
+        .dict-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #B2BAC8;
+            font-size: 14px;
+        }
+        .dict-import-export {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            h1 { font-size: 28px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .nav-button { padding: 12px 20px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 로딩 오버레이 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">데이터를 불러오는 중...</div>
+    </div>
+
+    <div class="container">
+        <div class="main-nav">
+            <a href="index.html" class="nav-button">📊 서비스 접수 비교 분석</a>
+            <a href="symptom_analysis.html" class="nav-button active">🔍 문의내용 증상 분석</a>
+            <a href="processing_dashboard.html" class="nav-button">📋 처리건 분석</a>
+            <a href="converter.html" class="nav-button" style="margin-left:auto;">🔧 데이터 변환</a>
+        </div>
+        
+        <h1>제품별 문의내용 증상 분석</h1>
+        <p class="subtitle">상위 10개 제품의 고객 문의에서 추출한 구체적인 문제 증상입니다</p>
+
+        <!-- 🆕 기간 선택 드롭다운 -->
+        <div class="period-selector-container">
+            <span class="period-selector-label">📅 분석 기간:</span>
+            <select class="period-selector" id="periodSelector">
+                <option value="">로딩 중...</option>
+            </select>
+            <span class="period-info" id="periodInfo"></span>
+        </div>
+
+        <!-- 에러 배너 -->
+        <div class="error-banner" id="errorBanner"></div>
+
+        <!-- 🆕 로컬 파일 직접 로딩 패널 -->
+        <div class="file-fallback" id="fileFallback">
+            <h3>📁 로컬 파일 모드</h3>
+            <p>로컬(file://)에서는 자동 로딩이 불가합니다. 아래 버튼으로 JSON 파일을 직접 선택하세요.<br>
+            또는 로컬 서버: <code style="background:#FFF8DC;padding:2px 6px;border-radius:4px;font-size:12px;">python -m http.server 8000</code> → <code style="background:#FFF8DC;padding:2px 6px;border-radius:4px;font-size:12px;">http://localhost:8000</code></p>
+            <div class="fb-row">
+                <span class="fb-label">① manifest.json</span>
+                <button class="fb-btn" id="fbManifestBtn" onclick="document.getElementById('fbManifestInput').click()">파일 선택</button>
+                <span class="fb-status" id="fbManifestStatus"></span>
+                <input type="file" id="fbManifestInput" accept=".json" onchange="handleLocalManifest(this)">
+            </div>
+            <div class="fb-row" id="fbDataRow" style="display:none;">
+                <span class="fb-label">② 데이터 JSON</span>
+                <button class="fb-btn" id="fbDataBtn" onclick="document.getElementById('fbDataInput').click()">파일 선택</button>
+                <span class="fb-status" id="fbDataStatus"></span>
+                <input type="file" id="fbDataInput" accept=".json" onchange="handleLocalData(this)">
+            </div>
+        </div>
+
+        <div id="dataSourceBadge" class="data-source" style="display:none;"></div>
+        
+        <div class="badges">
+            <span class="badge">✅ 띄어쓰기 정규화</span>
+            <span class="badge">✅ 대소문자 정규화</span>
+            <span class="badge">✅ O/0 정규화</span>
+            <span class="badge">✅ 쉼표 정규화</span>
+            <span class="badge">✅ 작동불/작동불량 통합</span>
+            <span class="badge" style="background:#FFEDD5; color:#9A3412;" id="badgeConsolidation">🔗 유사어 통합: OFF</span>
+        </div>
+
+        <!-- 🆕 유사어 통합 패널 -->
+        <div class="consolidation-panel" id="consolidationPanel">
+            <div class="consolidation-header">
+                <div class="consolidation-title">
+                    <h3>🔗 유사 문의내용 통합 엔진</h3>
+                    <span class="info-text">유사한 단어/구문을 자동 병합하여 정확한 분석을 지원합니다</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="font-size:13px; font-weight:600; color:#9A3412;" id="toggleLabel">OFF</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="consolidationToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="consolidation-stats" id="consolidationStats">
+                <div class="cons-stats-grid" id="consStatsGrid"></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                    <span style="font-size:13px; font-weight:700; color:#9A3412;">📋 통합 내역 (현재 제품)</span>
+                    <button class="cons-expand-btn" id="consExpandBtn" onclick="toggleMergeLog()">▼ 펼치기</button>
+                </div>
+                <div class="merge-log" id="mergeLog" style="display:none;"></div>
+            </div>
+
+            <!-- 🆕 동의어 사전 편집기 -->
+            <div style="margin-top:14px; display:flex; justify-content:center;">
+                <button class="cons-expand-btn" id="dictEditorToggleBtn" onclick="toggleDictEditor()" style="padding:8px 24px;">
+                    📖 동의어 사전 편집기 ▼
+                </button>
+            </div>
+            <div class="dict-editor" id="dictEditor">
+                <div class="dict-toolbar">
+                    <div class="dict-toolbar-left">
+                        <input type="text" class="dict-search" id="dictSearch" placeholder="🔍 대표어 또는 변형어 검색..." oninput="DictUI.render()">
+                    </div>
+                    <div class="dict-toolbar-right">
+                        <button class="dict-btn dict-btn-primary" onclick="DictUI.openAddModal()">➕ 새 그룹 추가</button>
+                        <button class="dict-btn dict-btn-secondary" onclick="DictUI.exportJSON()">📤 내보내기</button>
+                        <button class="dict-btn dict-btn-secondary" onclick="document.getElementById('dictImportInput').click()">📥 가져오기</button>
+                        <input type="file" id="dictImportInput" accept=".json" style="display:none;" onchange="DictUI.importJSON(this)">
+                        <button class="dict-btn dict-btn-danger" onclick="DictUI.resetToDefault()">🔄 초기화</button>
+                    </div>
+                </div>
+                <div class="dict-summary" id="dictSummary"></div>
+                <div class="dict-group-list" id="dictGroupList"></div>
+            </div>
+        </div>
+
+        <!-- 동의어 편집 모달 -->
+        <div class="dict-modal-overlay" id="dictModal">
+            <div class="dict-modal">
+                <h3 id="dictModalTitle">새 동의어 그룹 추가</h3>
+                <div class="dict-form-group">
+                    <label class="dict-form-label">대표어 (통합 후 표시될 이름)</label>
+                    <input type="text" class="dict-form-input" id="dictModalCanonical" placeholder="예: 증기누설">
+                </div>
+                <div class="dict-form-group">
+                    <label class="dict-form-label">변형어 목록 (한 줄에 하나씩)</label>
+                    <textarea class="dict-form-textarea" id="dictModalVariants" placeholder="증기샘&#10;증기 누설&#10;증기누수&#10;증누"></textarea>
+                    <div class="dict-form-help">줄바꿈으로 구분합니다. 대표어와 동일한 의미의 다양한 표현을 입력하세요.</div>
+                </div>
+                <div class="dict-modal-footer">
+                    <button class="dict-btn dict-btn-secondary" onclick="DictUI.closeModal()">취소</button>
+                    <button class="dict-btn dict-btn-success" id="dictModalSaveBtn" onclick="DictUI.saveModal()">저장</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🆕 기준월 필터 -->
+        <div id="monthFilterContainer" style="display:none; margin-bottom: 24px; padding: 16px 20px; background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%); border-radius: 12px; border: 2px solid #86EFAC;">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <span style="font-size: 14px; font-weight: 700; color: #166534;">📅 기준월:</span>
+                <div id="monthFilterButtons" style="display: flex; gap: 8px; flex-wrap: wrap;"></div>
+            </div>
+        </div>
+        
+        <div class="product-tabs" id="productTabs"></div>
+        <div class="stats-grid" id="statsGrid"></div>
+        <div id="selectedSymptomBox"></div>
+        
+        <div class="chart-section">
+            <div class="chart-header">
+                <div>
+                    <h2>증상 빈도 분산 분석</h2>
+                    <p>버블을 클릭하면 상세 정보가 표시됩니다 • 버블 크기는 점유율을 나타냅니다</p>
+                </div>
+                <div class="top-buttons">
+                    <button class="top-button active" data-count="10">Top 10</button>
+                    <button class="top-button" data-count="20">Top 20</button>
+                    <button class="top-button" data-count="30">Top 30</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="symptomChart"></canvas>
+            </div>
+        </div>
+        
+        <div>
+            <h2 style="font-size: 24px; font-weight: 700; color: #2E404E; margin-bottom: 16px;">
+                상위 <span id="showCountLabel">10</span>개 증상 상세
+            </h2>
+            <div class="symptoms-grid" id="symptomsGrid"></div>
+        </div>
+    </div>
+    
+    <script>
+    // ====================================================================
+    // DataLoader - 공통 외부 JSON 데이터 로딩 클래스
+    // ====================================================================
+    var DataLoader = {
+        manifest: null,
+        cache: {},
+        dataType: 'symptom',
+        isLocal: location.protocol === 'file:',
+        _storagePrefix: '__dash_symptom_',
+
+        showLoading: function() {
+            document.getElementById('loadingOverlay').classList.add('show');
+        },
+        hideLoading: function() {
+            document.getElementById('loadingOverlay').classList.remove('show');
+        },
+        showError: function(msg) {
+            var banner = document.getElementById('errorBanner');
+            banner.textContent = '⚠️ ' + msg;
+            banner.classList.add('show');
+        },
+        hideError: function() {
+            document.getElementById('errorBanner').classList.remove('show');
+        },
+
+        // IndexedDB 대용량 캐싱
+        _dbName: 'DashCache_symptom',
+        _dbVer: 1,
+        _openDB: function() {
+            var self = this;
+            return new Promise(function(resolve, reject) {
+                var req = indexedDB.open(self._dbName, self._dbVer);
+                req.onupgradeneeded = function(e) { e.target.result.createObjectStore('cache'); };
+                req.onsuccess = function(e) { resolve(e.target.result); };
+                req.onerror = function() { reject(req.error); };
+            });
+        },
+        saveToIDB: async function(key, value) {
+            try {
+                var db = await this._openDB();
+                return new Promise(function(resolve) {
+                    var tx = db.transaction('cache', 'readwrite');
+                    tx.objectStore('cache').put(value, key);
+                    tx.oncomplete = function() { resolve(true); };
+                    tx.onerror = function() { resolve(false); };
+                });
+            } catch(e) { return false; }
+        },
+        loadFromIDB: async function(key) {
+            try {
+                var db = await this._openDB();
+                return new Promise(function(resolve) {
+                    var tx = db.transaction('cache', 'readonly');
+                    var req = tx.objectStore('cache').get(key);
+                    req.onsuccess = function() { resolve(req.result || null); };
+                    req.onerror = function() { resolve(null); };
+                });
+            } catch(e) { return null; }
+        },
+
+        loadManifest: async function() {
+            if (this.isLocal) {
+                document.getElementById('fileFallback').classList.add('show');
+                return null;
+            }
+            try {
+                var response = await fetch('./manifest.json?t=' + Date.now());
+                if (!response.ok) throw new Error('manifest.json을 찾을 수 없습니다');
+                this.manifest = await response.json();
+                return this.manifest;
+            } catch (e) {
+                this.showError('manifest.json 로드 실패: ' + e.message);
+                return null;
+            }
+        },
+
+        loadPeriod: async function(periodId) {
+            var cacheKey = periodId + '_' + this.dataType;
+            if (this.cache[cacheKey]) return this.cache[cacheKey];
+            
+            if (this.isLocal) {
+                document.getElementById('fbDataRow').style.display = 'flex';
+                document.getElementById('fbDataStatus').textContent = '← ' + periodId + '-' + this.dataType + '.json 선택';
+                return null;
+            }
+            
+            this.showLoading();
+            this.hideError();
+            
+            try {
+                var periodMeta = this.manifest.periods.find(function(p) { return p.id === periodId; });
+                var url;
+                // 항상 상대경로 사용 (GitHub Pages 호환)
+                url = 'data/' + periodId + '-' + this.dataType + '.json?t=' + Date.now();
+                
+                var response = await fetch(url);
+                if (!response.ok) throw new Error(url + '을 찾을 수 없습니다');
+                
+                var data = await response.json();
+                this.cache[cacheKey] = data;
+                this.hideLoading();
+                return data;
+            } catch (e) {
+                this.hideLoading();
+                this.showError('데이터 로드 실패: ' + e.message);
+                return null;
+            }
+        },
+
+        populatePeriodSelector: function() {
+            var selector = document.getElementById('periodSelector');
+            selector.innerHTML = '';
+            
+            if (!this.manifest || !this.manifest.periods || this.manifest.periods.length === 0) {
+                selector.innerHTML = '<option value="">사용 가능한 데이터 없음</option>';
+                return;
+            }
+
+            var periods = this.manifest.periods.slice().sort(function(a, b) {
+                return b.id.localeCompare(a.id);
+            });
+
+            periods.forEach(function(period) {
+                var option = document.createElement('option');
+                option.value = period.id;
+                option.textContent = period.label || period.id;
+                selector.appendChild(option);
+            });
+        }
+    };
+
+    // 로컬 파일 로딩 핸들러 (고유 키 + IndexedDB 캐싱)
+    function handleLocalManifest(input) {
+        if (!input.files[0]) return;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                DataLoader.manifest = JSON.parse(e.target.result);
+                try { localStorage.setItem(DataLoader._storagePrefix + 'manifest', e.target.result); } catch(x) {}
+                DataLoader.populatePeriodSelector();
+                document.getElementById('fbManifestBtn').classList.add('loaded');
+                document.getElementById('fbManifestBtn').textContent = '✅ 로드 완료';
+                document.getElementById('fbManifestStatus').textContent = DataLoader.manifest.periods.length + '개 기간';
+                document.getElementById('fbDataRow').style.display = 'flex';
+                DataLoader.hideError();
+            } catch (err) {
+                DataLoader.showError('manifest.json 파싱 오류: ' + err.message);
+            }
+        };
+        reader.readAsText(input.files[0]);
+    }
+
+    function handleLocalData(input) {
+        if (!input.files[0]) return;
+        var reader = new FileReader();
+        reader.onload = async function(e) {
+            try {
+                var data = JSON.parse(e.target.result);
+                var periodId = document.getElementById('periodSelector').value;
+                var cacheKey = periodId + '_' + DataLoader.dataType;
+                DataLoader.cache[cacheKey] = data;
+                var saved = await DataLoader.saveToIDB(cacheKey, data);
+                if (!saved) {
+                    console.warn('[캐시] IndexedDB 저장 실패');
+                }
+                document.getElementById('fbDataBtn').classList.add('loaded');
+                document.getElementById('fbDataBtn').textContent = '✅ 로드 완료';
+                document.getElementById('fbDataStatus').textContent = input.files[0].name + (saved ? ' (캐시됨)' : '');
+                await changePeriod(periodId);
+            } catch (err) {
+                DataLoader.showError('데이터 파싱 오류: ' + err.message);
+            }
+        };
+        reader.readAsText(input.files[0]);
+    }
+
+    // ====================================================================
+    // SynonymEngine - 유사 문의내용 통합 엔진
+    // ====================================================================
+    var SynonymEngine = {
+        enabled: false,
+        mergeLog: {},    // { product: [ {from, to, fromCount, toCount} ] }
+        statsCache: {},  // { product: { before, after, merged } }
+
+        // ─── 1) 명시적 동의어 사전 (대표어 → [변형들]) ───
+        synonymDict: {
+            // ── 밥솥: E01 에러 그룹 ──
+            'E01 에러': ['E01', 'e01', 'eo1', 'EO1', 'e01에러', 'E01에러', 'eo1에러', 'EO1에러', 'E01 에러', '.e01', 'e01에러외', 'e01에러(내방)', 'E01에러외'],
+            // ── 밥솥: ECO 에러 그룹 ──
+            'ECO 에러': ['ECO', 'eco', 'Eco', 'EDO', 'edo', 'eco에러', 'ECO에러', 'edo에러', 'EDO에러', 'ECO에러-내방', 'eco 에러', 'ECO 에러'],
+            // ── 밥솥: 증기누설 그룹 ──
+            '증기누설': ['증기샘', '증기 누설', '증기누수', '증기누설-내방', '증기누설(내방)', '.증기누설', '.증기샘', '옆증기누설', '증누', '추증누', '증기누설 점검요청', '증기샘외', '증/누'],
+            // ── 밥솥: 증기배출 불량 ──
+            '증기배출불량': ['증기배출무', '증기배출안됨', '증기배출 안됨', '증기배출x', '증기배출불', '증기배출X', '퍼석함.증기배출불'],
+            // ── 밥솥: 조기배출 ──
+            '조기배출': ['조기배출됨', '조기배출외', '조기배출-내방', '조기배출.', '증기 조기배출'],
+            // ── 밥솥: 배출불량 ──
+            '배출불량': ['배출무', '배출불', '배출안됨', '배출불(내방)', '배출됨(내방)'],
+            // ── 밥솥: 화면깜빡임 ──
+            '화면깜빡임': ['화면깜박임', '화면 깜빡임', '화면 깜박임', '깜빡임', '깜박임', '액정깜박임', '액정깜빡임', '액정깜박거림', '깜빡거림', '전원깜박임', '화면불'],
+            // ── 밥솥: 놉파손 ──
+            '놉파손': ['놉 파손', '놉탈락', '놉빠짐', '놉이탈', '놉 탈락', '놉교체', '놉 교체', '놉이상', '놉버튼파손'],
+            // ── 밥솥: 보온시 냄새 ──
+            '보온시 냄새': ['보온중냄새', '보온냄새', '보온중 냄새', '보온시냄새', '보온 시 냄새'],
+            // ── 밥솥: 보온시 밥마름 ──
+            '보온시 밥마름': ['보온시밥마름', '보온중밥마름', '보온중 밥마름'],
+            // ── 밥솥: 밥마름 ──
+            '밥마름': ['밥 마름'],
+            // ── 밥솥: 설익음 ──
+            '설익음': ['밥설익음', '밥이 설익음'],
+            // ── 밥솥: 잠김에러 ──
+            '잠김에러': ['잠김 에러'],
+
+            // ── 정수기: 온수 불량 ──
+            '온수불량': ['온수안나옴', '온수안됨', '온수출수안됨', '온수미지근', '온수 안나옴', '온수 안됨'],
+            // ── 정수기: 냉수 불량 ──
+            '냉수불량': ['냉수미지근', '냉수안나옴', '냉수 안나옴'],
+            // ── 정수기: 출수 불량 ──
+            '출수불량': ['출수안됨', '물안나옴', '출수 안됨', '물 안나옴'],
+            // ── 정수기: 얼음 불량 ──
+            '얼음불량': ['얼음안나옴', '얼음 안나옴', '얼음안됨'],
+            // ── 정수기: 원수밸브 ──
+            '원수밸브 잠금': ['원수밸브잠금불', '원수밸브잠금', '원수밸브 잠금불'],
+
+            // ── 음식물처리기: 건조통 ──
+            '건조통 에러': ['건조통에러', '건조통이상', '건조통 이상', '건조통이상에러'],
+            // ── 음식물처리기: 건조통 누수 ──
+            '건조통 누수': ['건조통누수'],
+
+            // ── 인덕션: 용기인식 ──
+            '용기인식불량': ['용기인식불', '용기인식 안됨', '용기인식안됨', '용기인식X', '용기인식x', '용기 인식안됨'],
+            // ── 인덕션: 상판 ──
+            '상판파손': ['상판깨짐', '상판 파손', '상판 깨짐'],
+
+            // ── 비데: 노즐 ──
+            '노즐불량': ['노즐안나옴', '노즐작동무', '노즐 안나옴', '노즐 작동무'],
+            // ── 비데: 변좌 ──
+            '변좌흔들림': ['변좌 흔들림'],
+
+            // ── 가습기: 분무 불량 ──
+            '분무불량': ['분무안됨', '분무불', '분무x', '분무X', '분무 불', '분무 안됨'],
+            // ── 가습기: 가습 불량 ──
+            '가습불량': ['가습안됨', '가습불', '가습x', '가습X', '가습 안됨'],
+
+            // ── 무선청소기: 충전 ──
+            '충전불량': ['충전안됨', '충전불', '충전x', '충전X', '충전 안됨'],
+            // ── 무선청소기: 흡입 ──
+            '흡입불량': ['흡입안됨', '흡입불', '흡입약함', '흡입 안됨'],
+
+            // ── 소음 ──
+            '소음': ['소음심함', '소음발생', '소음 발생', '작동시 소음'],
+        },
+
+        // ─── 2) 범용 접미사 정규화 규칙 ───
+        suffixNormRules: [
+            // "~무", "~불", "~안됨", "~X", "~x" → "~불량" (단, 사전에 없을 때 fallback)
+            { pattern: /^(.{2,}?)(무|불|안됨|x|X)$/, replacement: '$1불량' },
+            // "~불-내방", "~(내방)", "~-내방" → strip suffix
+            { pattern: /[-.(](내방|점검요청)[).]?$/, replacement: '' },
+            // leading dots
+            { pattern: /^[.]+/, replacement: '' },
+            // trailing dots
+            { pattern: /[.]+$/, replacement: '' },
+        ],
+
+        // 역 인덱스 구축 (synonym → 대표어)
+        _reverseIndex: null,
+        _buildReverseIndex: function() {
+            this._reverseIndex = {};
+            var dict = this.synonymDict;
+            for (var canonical in dict) {
+                var variants = dict[canonical];
+                for (var i = 0; i < variants.length; i++) {
+                    this._reverseIndex[variants[i]] = canonical;
+                    // 또한 소문자 키도 등록
+                    this._reverseIndex[variants[i].toLowerCase()] = canonical;
+                }
+                // 대표어 자체도 등록
+                this._reverseIndex[canonical] = canonical;
+                this._reverseIndex[canonical.toLowerCase()] = canonical;
+            }
+        },
+
+        // 정규화: 공백 제거 후 사전 탐색 → 없으면 접미사 규칙 적용
+        normalize: function(symptom) {
+            if (!this._reverseIndex) this._buildReverseIndex();
+            
+            var s = symptom.trim();
+            
+            // 1) 정확히 사전에 있으면 바로 반환
+            if (this._reverseIndex[s]) return this._reverseIndex[s];
+            
+            // 2) 소문자로 시도
+            var lower = s.toLowerCase();
+            if (this._reverseIndex[lower]) return this._reverseIndex[lower];
+            
+            // 3) 공백 제거 버전 시도
+            var noSpace = s.replace(/\s+/g, '');
+            if (this._reverseIndex[noSpace]) return this._reverseIndex[noSpace];
+            var noSpaceLower = noSpace.toLowerCase();
+            if (this._reverseIndex[noSpaceLower]) return this._reverseIndex[noSpaceLower];
+            
+            // 4) 접미사 정규화 적용
+            var normalized = s;
+            for (var i = 0; i < this.suffixNormRules.length; i++) {
+                normalized = normalized.replace(this.suffixNormRules[i].pattern, this.suffixNormRules[i].replacement);
+            }
+            normalized = normalized.trim();
+            if (normalized !== s) {
+                if (this._reverseIndex[normalized]) return this._reverseIndex[normalized];
+                // 접미사 정규화 결과가 다른 이름에 매칭되는지 재탐색
+                var normNoSpace = normalized.replace(/\s+/g, '');
+                if (this._reverseIndex[normNoSpace]) return this._reverseIndex[normNoSpace];
+            }
+            
+            // 5) 부분 포함(contains) 매칭: 사전 키워드가 문의내용 안에 포함되어 있으면 해당 대표어로 매핑
+            //    예) "01034379140 사전출입신청 센서작동불량" → "센서작동불량" 등록 시 자동 매칭
+            var idx = this._reverseIndex;
+            // 긴 키워드 우선 매칭 (더 구체적인 키가 먼저 걸리도록)
+            var allKeys = Object.keys(idx).sort(function(a, b) { return b.length - a.length; });
+            for (var ki = 0; ki < allKeys.length; ki++) {
+                var key = allKeys[ki];
+                if (key.length < 2) continue; // 너무 짧은 키는 스킵
+                if (s.indexOf(key) !== -1) return idx[key];
+                if (lower.indexOf(key.toLowerCase()) !== -1) return idx[key];
+            }
+
+            // 6) fallback: 접미사 정규화된 형태 반환 (다른 유사어와 묶일 수 있게)
+            return normalized || s;
+        },
+
+        // 제품별 증상 데이터 통합
+        consolidateProduct: function(productData) {
+            if (!productData || !productData.symptoms) return productData;
+            
+            var symptoms = productData.symptoms;
+            var merged = {};      // canonical → { count, originals: [{name, count}] }
+            var mergeItems = [];  // 통합 로그
+            
+            for (var i = 0; i < symptoms.length; i++) {
+                var s = symptoms[i];
+                var canonical = this.normalize(s.symptom);
+                
+                if (!merged[canonical]) {
+                    merged[canonical] = { count: 0, originals: [] };
+                }
+                merged[canonical].count += s.count;
+                merged[canonical].originals.push({ name: s.symptom, count: s.count });
+                
+                if (canonical !== s.symptom) {
+                    mergeItems.push({ from: s.symptom, to: canonical, count: s.count });
+                }
+            }
+            
+            // 통합된 증상 리스트 생성
+            var newSymptoms = [];
+            for (var canonical in merged) {
+                var m = merged[canonical];
+                var pct = productData.total_count > 0 
+                    ? Math.round(m.count / productData.total_count * 1000) / 10 
+                    : 0;
+                newSymptoms.push({
+                    symptom: canonical,
+                    count: m.count,
+                    percentage: pct,
+                    _originals: m.originals
+                });
+            }
+            
+            // 건수 내림차순 정렬
+            newSymptoms.sort(function(a, b) { return b.count - a.count; });
+            
+            return {
+                total_count: productData.total_count,
+                symptoms: newSymptoms,
+                _mergeItems: mergeItems,
+                _beforeCount: symptoms.length,
+                _afterCount: newSymptoms.length
+            };
+        },
+
+        // 전체 데이터 통합
+        consolidateAll: function(rawData) {
+            if (!this.enabled) return rawData;
+            
+            var result = {};
+            this.mergeLog = {};
+            this.statsCache = {};
+            
+            for (var product in rawData) {
+                var consolidated = this.consolidateProduct(rawData[product]);
+                result[product] = consolidated;
+                this.mergeLog[product] = consolidated._mergeItems || [];
+                this.statsCache[product] = {
+                    before: consolidated._beforeCount || 0,
+                    after: consolidated._afterCount || 0,
+                    merged: (consolidated._beforeCount || 0) - (consolidated._afterCount || 0)
+                };
+            }
+            
+            return result;
+        },
+
+        // UI: 통합 통계 렌더링
+        renderStats: function(product) {
+            var statsDiv = document.getElementById('consolidationStats');
+            var gridDiv = document.getElementById('consStatsGrid');
+            var logDiv = document.getElementById('mergeLog');
+            
+            if (!this.enabled) {
+                statsDiv.classList.remove('show');
+                return;
+            }
+            
+            statsDiv.classList.add('show');
+            
+            // 전체 통계
+            var totalBefore = 0, totalAfter = 0, totalMerged = 0;
+            for (var p in this.statsCache) {
+                totalBefore += this.statsCache[p].before;
+                totalAfter += this.statsCache[p].after;
+                totalMerged += this.statsCache[p].merged;
+            }
+            
+            var productStats = this.statsCache[product] || { before: 0, after: 0, merged: 0 };
+            
+            gridDiv.innerHTML = 
+                '<div class="cons-stat-item"><div class="label">현재 제품 통합 전</div><div class="value">' + productStats.before + '<span style="font-size:12px">개</span></div></div>' +
+                '<div class="cons-stat-item"><div class="label">현재 제품 통합 후</div><div class="value">' + productStats.after + '<span style="font-size:12px">개</span></div></div>' +
+                '<div class="cons-stat-item"><div class="label">현재 제품 병합</div><div class="value" style="color:#FF9F9F;">' + productStats.merged + '<span style="font-size:12px">건 감소</span></div></div>' +
+                '<div class="cons-stat-item"><div class="label">전체 제품 병합</div><div class="value" style="color:#A87DE8;">' + totalMerged + '<span style="font-size:12px">건 감소</span></div></div>';
+            
+            // 통합 로그
+            var items = this.mergeLog[product] || [];
+            if (items.length === 0) {
+                logDiv.innerHTML = '<div style="color:#9A3412; text-align:center; padding:12px;">이 제품에서는 통합된 항목이 없습니다</div>';
+            } else {
+                // 그룹핑: to 기준
+                var groups = {};
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    if (!groups[item.to]) groups[item.to] = [];
+                    groups[item.to].push(item);
+                }
+                
+                var html = '';
+                for (var to in groups) {
+                    var g = groups[to];
+                    var totalCount = 0;
+                    var fromNames = [];
+                    for (var j = 0; j < g.length; j++) {
+                        totalCount += g[j].count;
+                        fromNames.push('<span class="merged-from">' + g[j].from + '</span><span class="merged-count">(' + g[j].count.toLocaleString() + ')</span>');
+                    }
+                    html += '<div class="merge-item">' +
+                        '→ <span class="merged-to">' + to + '</span> ' +
+                        '<span class="merged-count">[+' + totalCount.toLocaleString() + '건 흡수]</span><br>' +
+                        '&nbsp;&nbsp;' + fromNames.join(' ') +
+                        '</div>';
+                }
+                logDiv.innerHTML = html;
+            }
+        }
+    };
+
+    function toggleMergeLog() {
+        var log = document.getElementById('mergeLog');
+        var btn = document.getElementById('consExpandBtn');
+        if (log.style.display === 'none') {
+            log.style.display = 'block';
+            btn.textContent = '▲ 접기';
+        } else {
+            log.style.display = 'none';
+            btn.textContent = '▼ 펼치기';
+        }
+    }
+
+    function toggleDictEditor() {
+        var editor = document.getElementById('dictEditor');
+        var btn = document.getElementById('dictEditorToggleBtn');
+        if (editor.classList.contains('show')) {
+            editor.classList.remove('show');
+            btn.innerHTML = '📖 동의어 사전 편집기 ▼';
+        } else {
+            editor.classList.add('show');
+            btn.innerHTML = '📖 동의어 사전 편집기 ▲';
+            DictUI.render();
+        }
+    }
+
+    // ====================================================================
+    // DictUI - 동의어 사전 편집 UI
+    // ====================================================================
+    var DictUI = {
+        _storageKey: '__synonym_dict_custom',
+        _editingCanonical: null, // null = 새로 추가, string = 수정중인 대표어
+        _defaultDict: null,     // 최초 기본 사전 백업
+
+        // 초기화: localStorage에서 사용자 사전 로드
+        init: function() {
+            // 기본 사전 백업
+            this._defaultDict = JSON.parse(JSON.stringify(SynonymEngine.synonymDict));
+            
+            // localStorage에 저장된 사전이 있으면 복원
+            try {
+                var saved = localStorage.getItem(this._storageKey);
+                if (saved) {
+                    var parsed = JSON.parse(saved);
+                    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+                        SynonymEngine.synonymDict = parsed;
+                        SynonymEngine._reverseIndex = null; // 재빌드 필요
+                        console.log('[사전] localStorage에서 복원: ' + Object.keys(parsed).length + '개 그룹');
+                    }
+                }
+            } catch(e) {
+                console.warn('[사전] localStorage 복원 실패:', e);
+            }
+        },
+
+        // localStorage에 저장
+        _save: function() {
+            try {
+                localStorage.setItem(this._storageKey, JSON.stringify(SynonymEngine.synonymDict));
+            } catch(e) {
+                console.warn('[사전] 저장 실패:', e);
+            }
+            // 역 인덱스 리빌드
+            SynonymEngine._reverseIndex = null;
+        },
+
+        // 변경 후 대시보드 재적용
+        _applyAndRefresh: function() {
+            this._save();
+            if (SynonymEngine.enabled) {
+                applyConsolidation();
+                renderAll();
+            }
+        },
+
+        // 요약 통계 렌더
+        _renderSummary: function() {
+            var dict = SynonymEngine.synonymDict;
+            var groupCount = Object.keys(dict).length;
+            var totalVariants = 0;
+            for (var k in dict) totalVariants += dict[k].length;
+            
+            document.getElementById('dictSummary').innerHTML =
+                '<div class="dict-summary-item">그룹 수: <b>' + groupCount + '</b></div>' +
+                '<div class="dict-summary-item">총 변형어: <b>' + totalVariants + '</b></div>' +
+                '<div class="dict-summary-item" style="color:#5DC9A5;">저장: <b>localStorage</b></div>';
+        },
+
+        // 그룹 목록 렌더
+        render: function() {
+            this._renderSummary();
+            
+            var dict = SynonymEngine.synonymDict;
+            var searchTerm = (document.getElementById('dictSearch').value || '').trim().toLowerCase();
+            var container = document.getElementById('dictGroupList');
+            
+            var keys = Object.keys(dict).sort(function(a, b) {
+                return a.localeCompare(b, 'ko');
+            });
+            
+            // 검색 필터
+            if (searchTerm) {
+                keys = keys.filter(function(canonical) {
+                    if (canonical.toLowerCase().indexOf(searchTerm) >= 0) return true;
+                    var variants = dict[canonical];
+                    for (var i = 0; i < variants.length; i++) {
+                        if (variants[i].toLowerCase().indexOf(searchTerm) >= 0) return true;
+                    }
+                    return false;
+                });
+            }
+            
+            if (keys.length === 0) {
+                container.innerHTML = '<div class="dict-empty">' + 
+                    (searchTerm ? '🔍 "' + searchTerm + '"에 대한 검색 결과가 없습니다' : '등록된 동의어 그룹이 없습니다') +
+                    '</div>';
+                return;
+            }
+            
+            var html = '';
+            for (var i = 0; i < keys.length; i++) {
+                var canonical = keys[i];
+                var variants = dict[canonical];
+                
+                html += '<div class="dict-group" data-canonical="' + this._escHtml(canonical) + '">';
+                html += '<div class="dict-group-header">';
+                html += '<div><span class="dict-canonical">' + this._escHtml(canonical) + '</span>';
+                html += '<span class="dict-count-badge">' + variants.length + '개 변형</span></div>';
+                html += '<div class="dict-group-actions">';
+                html += '<button class="dict-action-btn" title="편집" onclick="DictUI.openEditModal(\'' + this._escAttr(canonical) + '\')">✏️</button>';
+                html += '<button class="dict-action-btn danger" title="삭제" onclick="DictUI.deleteGroup(\'' + this._escAttr(canonical) + '\')">🗑️</button>';
+                html += '</div></div>';
+                
+                html += '<div class="dict-variants">';
+                for (var j = 0; j < variants.length; j++) {
+                    html += '<span class="dict-tag">' + this._escHtml(variants[j]);
+                    html += '<span class="dict-tag-remove" onclick="DictUI.removeVariant(\'' + this._escAttr(canonical) + '\',\'' + this._escAttr(variants[j]) + '\')">×</span>';
+                    html += '</span>';
+                }
+                html += '</div></div>';
+            }
+            
+            container.innerHTML = html;
+        },
+
+        // ─── 그룹 추가 모달 ───
+        openAddModal: function() {
+            this._editingCanonical = null;
+            document.getElementById('dictModalTitle').textContent = '새 동의어 그룹 추가';
+            document.getElementById('dictModalCanonical').value = '';
+            document.getElementById('dictModalCanonical').disabled = false;
+            document.getElementById('dictModalVariants').value = '';
+            document.getElementById('dictModalSaveBtn').textContent = '추가';
+            document.getElementById('dictModal').classList.add('show');
+        },
+
+        // ─── 그룹 편집 모달 ───
+        openEditModal: function(canonical) {
+            this._editingCanonical = canonical;
+            var variants = SynonymEngine.synonymDict[canonical] || [];
+            document.getElementById('dictModalTitle').textContent = '동의어 그룹 편집: ' + canonical;
+            document.getElementById('dictModalCanonical').value = canonical;
+            document.getElementById('dictModalCanonical').disabled = true;
+            document.getElementById('dictModalVariants').value = variants.join('\n');
+            document.getElementById('dictModalSaveBtn').textContent = '저장';
+            document.getElementById('dictModal').classList.add('show');
+        },
+
+        closeModal: function() {
+            document.getElementById('dictModal').classList.remove('show');
+            this._editingCanonical = null;
+        },
+
+        // ─── 모달 저장 ───
+        saveModal: function() {
+            var canonical = document.getElementById('dictModalCanonical').value.trim();
+            var variantsRaw = document.getElementById('dictModalVariants').value;
+            
+            if (!canonical) {
+                alert('대표어를 입력해주세요.');
+                return;
+            }
+            
+            // 변형어 파싱 (줄바꿈 구분, 빈 줄 제거)
+            var variants = variantsRaw.split('\n')
+                .map(function(v) { return v.trim(); })
+                .filter(function(v) { return v.length > 0 && v !== canonical; });
+            
+            if (variants.length === 0) {
+                alert('최소 1개 이상의 변형어를 입력해주세요.');
+                return;
+            }
+            
+            if (this._editingCanonical === null) {
+                // 새 그룹 추가
+                if (SynonymEngine.synonymDict[canonical]) {
+                    if (!confirm('"' + canonical + '" 그룹이 이미 존재합니다. 변형어를 추가하시겠습니까?')) return;
+                    // 기존 변형어와 합치기
+                    var existing = SynonymEngine.synonymDict[canonical];
+                    var newVars = variants.filter(function(v) { return existing.indexOf(v) < 0; });
+                    SynonymEngine.synonymDict[canonical] = existing.concat(newVars);
+                } else {
+                    SynonymEngine.synonymDict[canonical] = variants;
+                }
+            } else {
+                // 기존 그룹 수정
+                SynonymEngine.synonymDict[this._editingCanonical] = variants;
+            }
+            
+            this._applyAndRefresh();
+            this.closeModal();
+            this.render();
+        },
+
+        // ─── 개별 변형어 제거 ───
+        removeVariant: function(canonical, variant) {
+            var variants = SynonymEngine.synonymDict[canonical];
+            if (!variants) return;
+            
+            var idx = variants.indexOf(variant);
+            if (idx >= 0) {
+                variants.splice(idx, 1);
+                if (variants.length === 0) {
+                    if (confirm('"' + canonical + '" 그룹의 마지막 변형어입니다. 그룹을 삭제하시겠습니까?')) {
+                        delete SynonymEngine.synonymDict[canonical];
+                    }
+                }
+                this._applyAndRefresh();
+                this.render();
+            }
+        },
+
+        // ─── 그룹 삭제 ───
+        deleteGroup: function(canonical) {
+            if (!confirm('"' + canonical + '" 그룹과 모든 변형어를 삭제하시겠습니까?')) return;
+            delete SynonymEngine.synonymDict[canonical];
+            this._applyAndRefresh();
+            this.render();
+        },
+
+        // ─── 초기화 (기본 사전 복원) ───
+        resetToDefault: function() {
+            if (!confirm('사전을 최초 기본값으로 초기화하시겠습니까?\n사용자가 추가한 모든 변경사항이 삭제됩니다.')) return;
+            SynonymEngine.synonymDict = JSON.parse(JSON.stringify(this._defaultDict));
+            this._applyAndRefresh();
+            this.render();
+        },
+
+        // ─── JSON 내보내기 ───
+        exportJSON: function() {
+            var json = JSON.stringify(SynonymEngine.synonymDict, null, 2);
+            var blob = new Blob([json], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'synonym_dict_' + new Date().toISOString().slice(0, 10) + '.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        },
+
+        // ─── JSON 가져오기 ───
+        importJSON: function(input) {
+            if (!input.files[0]) return;
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    var parsed = JSON.parse(e.target.result);
+                    if (!parsed || typeof parsed !== 'object') throw new Error('올바른 JSON 형식이 아닙니다');
+                    
+                    var groupCount = Object.keys(parsed).length;
+                    var mode = confirm(groupCount + '개 그룹을 가져옵니다.\n\n[확인] = 기존 사전과 병합\n[취소] = 기존 사전 교체');
+                    
+                    if (mode) {
+                        // 병합 모드
+                        for (var canonical in parsed) {
+                            if (SynonymEngine.synonymDict[canonical]) {
+                                var existing = SynonymEngine.synonymDict[canonical];
+                                var newVars = parsed[canonical].filter(function(v) { return existing.indexOf(v) < 0; });
+                                SynonymEngine.synonymDict[canonical] = existing.concat(newVars);
+                            } else {
+                                SynonymEngine.synonymDict[canonical] = parsed[canonical];
+                            }
+                        }
+                    } else {
+                        // 교체 모드
+                        SynonymEngine.synonymDict = parsed;
+                    }
+                    
+                    DictUI._applyAndRefresh();
+                    DictUI.render();
+                    alert('가져오기 완료! (' + groupCount + '개 그룹)');
+                } catch(err) {
+                    alert('가져오기 실패: ' + err.message);
+                }
+            };
+            reader.readAsText(input.files[0]);
+            input.value = ''; // 같은 파일 재선택 허용
+        },
+
+        // ─── 유틸 ───
+        _escHtml: function(s) {
+            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        },
+        _escAttr: function(s) {
+            return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');
+        }
+    };
+
+    // ====================================================================
+    // App - 증상 분석 대시보드 로직
+    // ====================================================================
+    const productColors = {
+        '밥솥': { bg: '#FFE8E8', border: '#FFB3B3', text: '#CC7070' },
+        '정수기': { bg: '#DBEAFE', border: '#93C5FD', text: '#1E40AF' },
+        '비데': { bg: '#FFE8F5', border: '#FFB3D9', text: '#9F1239' },
+        '음식물처리기': { bg: '#C8F5E0', border: '#7DD3B0', text: '#1A7A5E' },
+        '인덕션레인지': { bg: '#FFF8DC', border: '#FFCF7A', text: '#6B4F35' },
+        '식기세척기': { bg: '#EBF0FF', border: '#A8AAFF', text: '#7A7FD4' },
+        '무선청소기': { bg: '#F3E8FF', border: '#A855F7', text: '#9B78C0' },
+        '가습기': { bg: '#FED7E2', border: '#F687B3', text: '#97266D' },
+        '로봇청소기': { bg: '#FFF4E6', border: '#FB923C', text: '#9A3412' },
+        '공기청정기': { bg: '#DCFCE7', border: '#22C55E', text: '#166534' }
+    };
+    
+    // 🆕 데이터는 외부에서 로드
+    let allData = {};       // 전체 데이터 (전체 + 기준월별)
+    let rawAllData = {};    // 🆕 통합 전 원본 데이터
+    let data = {};          // 현재 선택된 기준월의 데이터
+    let availableMonths = []; // 사용 가능한 기준월 목록
+    let currentMonth = '전체'; // 현재 선택된 기준월
+    let products = [];
+    let currentProduct = '';
+    let showCount = 10;
+    let selectedSymptom = null;
+    let chart = null;
+    
+    // 🆕 통합 적용 함수
+    function applyConsolidation() {
+        if (!rawAllData || Object.keys(rawAllData).length === 0) return;
+        
+        // 각 기준월 데이터에 통합 적용
+        allData = {};
+        for (var month in rawAllData) {
+            if (SynonymEngine.enabled) {
+                allData[month] = SynonymEngine.consolidateAll(rawAllData[month]);
+            } else {
+                allData[month] = rawAllData[month];
+            }
+        }
+        
+        data = allData[currentMonth] || allData['전체'] || {};
+        
+        // 배지 업데이트
+        var badge = document.getElementById('badgeConsolidation');
+        if (SynonymEngine.enabled) {
+            badge.textContent = '🔗 유사어 통합: ON';
+            badge.style.background = '#C8F5E0';
+            badge.style.color = '#1A7A5E';
+        } else {
+            badge.textContent = '🔗 유사어 통합: OFF';
+            badge.style.background = '#FFEDD5';
+            badge.style.color = '#9A3412';
+        }
+    }
+    
+    // 🆕 기간 변경
+    async function changePeriod(periodId) {
+        var loaded = await DataLoader.loadPeriod(periodId);
+        if (!loaded) return;
+        
+        // JSON 구조 감지 - 기준월별 데이터 여부
+        if (loaded.data && loaded.meta && loaded.meta.months) {
+            // 🆕 새 구조: { data: { "전체": {...}, "2026-01": {...}, ... } }
+            rawAllData = {};
+            for (var m in loaded.data) { rawAllData[m] = loaded.data[m]; }
+            availableMonths = loaded.meta.months || [];
+            currentMonth = '전체';
+        } else if (loaded.data) {
+            // 기존 구조: { data: { 밥솥: {...}, ... } }
+            rawAllData = { '전체': loaded.data };
+            availableMonths = [];
+            currentMonth = '전체';
+        } else {
+            // JSON 자체가 { 밥솥: {...}, 정수기: {...} } 형태인 경우
+            rawAllData = { '전체': loaded };
+            availableMonths = [];
+            currentMonth = '전체';
+        }
+        
+        // 🆕 통합 적용
+        applyConsolidation();
+        
+        // products 목록 - applyConsolidation 이후 data 키 기준으로 세팅
+        // (유사어 통합 전 loaded.products와 통합 후 data 키가 다를 수 있음)
+        products = Object.keys(data).filter(function(k) { return data[k] && data[k].total_count !== undefined; });
+        if (products.length === 0 && loaded.products) {
+            products = loaded.products;
+        }
+        
+        // 첫 제품 선택
+        currentProduct = products[0] || '';
+        selectedSymptom = null;
+        
+        // 기간 정보 표시
+        var periodMeta = DataLoader.manifest.periods.find(function(p) { return p.id === periodId; });
+        var info = document.getElementById('periodInfo');
+        if (periodMeta && periodMeta.generated) {
+            info.textContent = '생성일: ' + periodMeta.generated;
+        }
+        
+        // 데이터 소스 배지
+        var badge = document.getElementById('dataSourceBadge');
+        if (loaded.meta) {
+            var totalRecords = loaded.meta.totalRecords || '';
+            badge.textContent = '📅 데이터 기간: ' + (periodMeta ? periodMeta.label : periodId) + 
+                (totalRecords ? ' (' + totalRecords.toLocaleString() + '건)' : '');
+            badge.style.display = 'inline-block';
+        }
+        
+        // 🆕 기준월 필터 렌더링
+        renderMonthFilter();
+        
+        renderAll();
+    }
+    
+    // 🆕 기준월 필터 렌더링
+    function renderMonthFilter() {
+        var container = document.getElementById('monthFilterContainer');
+        var buttonsDiv = document.getElementById('monthFilterButtons');
+        
+        if (availableMonths.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+        
+        container.style.display = 'block';
+        
+        var options = ['전체'].concat(availableMonths);
+        buttonsDiv.innerHTML = options.map(function(month) {
+            var label = month === '전체' ? '전체' : month.replace(/^\d{4}-/, '') + '월';
+            var isActive = month === currentMonth ? ' active' : '';
+            return '<button class="month-filter-btn' + isActive + '" data-month="' + month + '">' + label + '</button>';
+        }).join('');
+        
+        // 이벤트
+        buttonsDiv.querySelectorAll('.month-filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                switchMonth(this.getAttribute('data-month'));
+            });
+        });
+    }
+    
+    // 🆕 기준월 전환
+    function switchMonth(month) {
+        currentMonth = month;
+        data = allData[month] || allData['전체'] || {};
+        selectedSymptom = null;
+        
+        // 버튼 상태 업데이트
+        document.querySelectorAll('.month-filter-btn').forEach(function(btn) {
+            btn.classList.toggle('active', btn.getAttribute('data-month') === month);
+        });
+        
+        renderAll();
+    }
+    
+    function renderAll() {
+        renderProductTabs();
+        renderStats();
+        renderChart();
+        renderSymptomsGrid();
+        renderSelectedSymptom();
+        // 🆕 통합 통계 업데이트
+        SynonymEngine.renderStats(currentProduct);
+    }
+    
+    function renderProductTabs() {
+        const container = document.getElementById('productTabs');
+        container.innerHTML = products.map(product => {
+            const color = productColors[product] || { bg: '#F2F4F8', border: '#B2BAC8', text: '#4A5C6E' };
+            const isActive = product === currentProduct;
+            const productData = data[product];
+            const totalCount = (productData && productData.total_count != null) ? productData.total_count : 0;
+            return `
+                <button 
+                    class="product-tab ${isActive ? 'active' : ''}"
+                    data-product="${product}"
+                    style="
+                        background-color: ${isActive ? color.border : color.bg};
+                        color: ${isActive ? 'white' : color.text};
+                        border-color: ${color.border};
+                    "
+                >
+                    ${product}
+                    <span style="font-size: 13px; opacity: 0.8; margin-left: 4px;">
+                        (${totalCount.toLocaleString()}건)
+                    </span>
+                </button>
+            `;
+        }).join('');
+    }
+    
+    function renderStats() {
+        const container = document.getElementById('statsGrid');
+        const productData = data[currentProduct];
+        if (!productData) { container.innerHTML = ''; return; }
+        const color = productColors[currentProduct] || { bg: '#F2F4F8', border: '#B2BAC8', text: '#4A5C6E' };
+        
+        container.innerHTML = `
+            <div class="stat-card" style="background-color: ${color.bg};">
+                <div class="stat-label" style="color: ${color.text};">총 문의 건수</div>
+                <div class="stat-value" style="color: ${color.border};">
+                    ${(productData.total_count || 0).toLocaleString()}<span style="font-size: 16px; margin-left: 4px;">건</span>
+                </div>
+            </div>
+            <div class="stat-card" style="background-color: ${color.bg};">
+                <div class="stat-label" style="color: ${color.text};">발견된 증상</div>
+                <div class="stat-value" style="color: ${color.border};">
+                    ${productData.symptoms.length}<span style="font-size: 16px; margin-left: 4px;">개</span>
+                </div>
+            </div>
+            <div class="stat-card" style="background-color: ${color.bg};">
+                <div class="stat-label" style="color: ${color.text};">최다 증상</div>
+                <div class="stat-value" style="color: ${color.border}; font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    ${productData.symptoms[0] ? productData.symptoms[0].symptom : '-'}
+                </div>
+                <div class="stat-sub" style="color: ${color.text};">
+                    ${productData.symptoms[0] ? productData.symptoms[0].percentage + '%' : ''}
+                </div>
+            </div>
+        `;
+    }
+    
+    function renderSelectedSymptom() {
+        const container = document.getElementById('selectedSymptomBox');
+        if (!selectedSymptom) {
+            container.innerHTML = '';
+            return;
+        }
+        
+        const color = productColors[currentProduct] || { bg: '#F2F4F8', border: '#B2BAC8', text: '#4A5C6E' };
+        
+        // 🆕 통합된 원본 항목들 표시
+        let originalsHtml = '';
+        if (SynonymEngine.enabled && selectedSymptom._originals && selectedSymptom._originals.length > 1) {
+            originalsHtml = '<div style="margin-top: 16px; padding-top: 12px; border-top: 1px dashed ' + color.border + '40;">' +
+                '<div style="font-size: 12px; font-weight: 600; color: ' + color.text + '; margin-bottom: 8px;">🔗 통합된 항목들 (' + selectedSymptom._originals.length + '개)</div>' +
+                '<div style="display: flex; flex-wrap: wrap; gap: 6px;">';
+            selectedSymptom._originals.sort(function(a,b){ return b.count - a.count; });
+            for (var i = 0; i < selectedSymptom._originals.length; i++) {
+                var orig = selectedSymptom._originals[i];
+                originalsHtml += '<span style="display:inline-block; padding: 4px 10px; border-radius: 6px; font-size: 12px; background: white; border: 1px solid ' + color.border + '60; color: #4A5C6E;">' + 
+                    orig.name + ' <b>(' + orig.count.toLocaleString() + ')</b></span>';
+            }
+            originalsHtml += '</div></div>';
+        }
+        
+        container.innerHTML = `
+            <div class="selected-symptom" style="background-color: ${color.bg}; border-color: ${color.border};">
+                <div style="display: flex; justify-content: space-between; align-items: start; gap: 20px; flex-wrap: wrap;">
+                    <div style="flex:1;">
+                        <div style="font-size: 13px; font-weight: 600; color: ${color.text}; margin-bottom: 8px;">
+                            선택된 증상
+                        </div>
+                        <div style="font-size: 32px; font-weight: 800; color: ${color.border}; margin-bottom: 12px;">
+                            ${selectedSymptom.symptom}
+                        </div>
+                        <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                            <div>
+                                <span style="color: #8896A8;">문의 건수: </span>
+                                <span style="font-size: 20px; font-weight: 800; color: #2E404E;">
+                                    ${selectedSymptom.count.toLocaleString()}건
+                                </span>
+                            </div>
+                            <div>
+                                <span style="color: #8896A8;">점유율: </span>
+                                <span style="font-size: 20px; font-weight: 800; color: #2E404E;">
+                                    ${selectedSymptom.percentage}%
+                                </span>
+                            </div>
+                        </div>
+                        ${originalsHtml}
+                    </div>
+                    <button class="close-button" onclick="clearSelection()">닫기</button>
+                </div>
+            </div>
+        `;
+    }
+    
+    function renderChart() {
+        const canvas = document.getElementById('symptomChart');
+        const productData = data[currentProduct];
+        if (!productData) return;
+        const symptoms = productData.symptoms.slice(0, showCount);
+        const color = productColors[currentProduct] || { bg: '#F2F4F8', border: '#B2BAC8', text: '#4A5C6E' };
+        
+        if (chart) chart.destroy();
+        
+        const maxCount = Math.max(...symptoms.map(s => s.count));
+        const suggestedMax = maxCount * 1.2;
+        
+        const ctx = canvas.getContext('2d');
+        chart = new Chart(ctx, {
+            type: 'bubble',
+            data: {
+                datasets: [{
+                    data: symptoms.map((s, i) => ({
+                        x: i + 1,
+                        y: s.count,
+                        r: Math.max(10, Math.min(45, s.percentage * 5))
+                    })),
+                    backgroundColor: color.bg,
+                    borderColor: color.border,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: { top: 40, right: 20, bottom: 20, left: 20 }
+                },
+                onClick: (event, elements) => {
+                    if (elements.length > 0) {
+                        selectedSymptom = symptoms[elements[0].index];
+                        renderSelectedSymptom();
+                        renderSymptomsGrid();
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: '증상 순위', font: { size: 14, weight: 'bold' } },
+                        ticks: { stepSize: 1, callback: v => Math.floor(v) }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: suggestedMax,
+                        title: { display: true, text: '문의 건수', font: { size: 14, weight: 'bold' } },
+                        ticks: { callback: v => v.toLocaleString() + '건' }
+                    }
+                }
+            },
+            plugins: [{
+                id: 'customLabels',
+                afterDatasetsDraw: (chart) => {
+                    const ctx = chart.ctx;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((element, index) => {
+                            const symptom = symptoms[index].symptom;
+                            const label = symptom.length > 10 ? symptom.substring(0, 10) + '...' : symptom;
+                            
+                            ctx.fillStyle = '#2E404E';
+                            ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'bottom';
+                            
+                            const x = element.x;
+                            const y = element.y - element.options.radius - 8;
+                            
+                            ctx.fillText(label, x, y);
+                        });
+                    });
+                }
+            }]
+        });
+    }
+    
+    function renderSymptomsGrid() {
+        const container = document.getElementById('symptomsGrid');
+        const productData = data[currentProduct];
+        if (!productData) { container.innerHTML = ''; return; }
+        const symptoms = productData.symptoms.slice(0, showCount);
+        const color = productColors[currentProduct] || { bg: '#F2F4F8', border: '#B2BAC8', text: '#4A5C6E' };
+        
+        container.innerHTML = symptoms.map((symptom, idx) => {
+            const isSelected = selectedSymptom && selectedSymptom.symptom === symptom.symptom;
+            const mergedBadge = (SynonymEngine.enabled && symptom._originals && symptom._originals.length > 1)
+                ? '<span style="font-size:10px; background:#FFF8DC; color:#7A5A3C; padding:2px 6px; border-radius:4px; margin-left:6px; font-weight:600;">🔗' + symptom._originals.length + '개 통합</span>'
+                : '';
+            return `
+                <div 
+                    class="symptom-card ${isSelected ? 'selected' : ''}"
+                    data-symptom-idx="${idx}"
+                    style="
+                        background-color: ${isSelected ? '#EBF0FF' : color.bg};
+                        border-color: ${color.border};
+                    "
+                >
+                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                        <span class="symptom-rank" style="color: ${color.text};">${idx + 1}</span>
+                        <span class="symptom-name">${symptom.symptom}</span>
+                        ${mergedBadge}
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="symptom-count" style="color: ${color.border};">${symptom.count.toLocaleString()}건</span>
+                        <span class="symptom-percent" style="color: ${color.text};">${symptom.percentage}%</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+    
+    function attachEventListeners() {
+        document.getElementById('productTabs').addEventListener('click', (e) => {
+            const btn = e.target.closest('.product-tab');
+            if (btn) {
+                currentProduct = btn.dataset.product;
+                selectedSymptom = null;
+                renderAll();
+            }
+        });
+        
+        document.querySelectorAll('.top-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                showCount = parseInt(btn.dataset.count);
+                selectedSymptom = null;
+                document.querySelectorAll('.top-button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('showCountLabel').textContent = showCount;
+                renderChart();
+                renderSymptomsGrid();
+                renderSelectedSymptom();
+            });
+        });
+        
+        document.getElementById('symptomsGrid').addEventListener('click', (e) => {
+            const card = e.target.closest('.symptom-card');
+            if (card) {
+                const idx = parseInt(card.dataset.symptomIdx);
+                const productData = data[currentProduct];
+                if (productData) {
+                    selectedSymptom = productData.symptoms[idx];
+                    renderSelectedSymptom();
+                    renderSymptomsGrid();
+                }
+            }
+        });
+        
+        // 🆕 유사어 통합 토글
+        document.getElementById('consolidationToggle').addEventListener('change', function() {
+            SynonymEngine.enabled = this.checked;
+            document.getElementById('toggleLabel').textContent = this.checked ? 'ON' : 'OFF';
+            document.getElementById('toggleLabel').style.color = this.checked ? '#5DC9A5' : '#9A3412';
+            
+            selectedSymptom = null;
+            applyConsolidation();
+            renderAll();
+        });
+        
+        // 🆕 모달 닫기 (오버레이 클릭 / ESC 키)
+        document.getElementById('dictModal').addEventListener('click', function(e) {
+            if (e.target === this) DictUI.closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') DictUI.closeModal();
+        });
+    }
+    
+    function clearSelection() {
+        selectedSymptom = null;
+        renderSelectedSymptom();
+        renderSymptomsGrid();
+    }
+    
+    // ====================================================================
+    // 초기화
+    // ====================================================================
+    window.addEventListener('load', async function() {
+        DictUI.init();  // 🆕 사전 편집기 초기화 (localStorage 복원)
+        attachEventListeners();
+        
+        var manifest = await DataLoader.loadManifest();
+        
+        if (!manifest && DataLoader.isLocal) {
+            try {
+                var cached = localStorage.getItem(DataLoader._storagePrefix + 'manifest');
+                if (cached) {
+                    DataLoader.manifest = JSON.parse(cached);
+                    manifest = DataLoader.manifest;
+                    document.getElementById('fbManifestBtn').classList.add('loaded');
+                    document.getElementById('fbManifestBtn').textContent = '✅ 캐시 로드됨';
+                    document.getElementById('fbManifestStatus').textContent = manifest.periods.length + '개 기간 (캐시)';
+                    document.getElementById('fbDataRow').style.display = 'flex';
+                }
+            } catch(x) {}
+        }
+        
+        if (!manifest) return;
+        
+        DataLoader.populatePeriodSelector();
+        
+        var selector = document.getElementById('periodSelector');
+        if (selector.options.length > 0) {
+            if (DataLoader.isLocal) {
+                var periodId = selector.value;
+                var cacheKey = periodId + '_' + DataLoader.dataType;
+                try {
+                    var cachedData = await DataLoader.loadFromIDB(cacheKey);
+                    if (cachedData) {
+                        DataLoader.cache[cacheKey] = cachedData;
+                        document.getElementById('fbDataBtn').classList.add('loaded');
+                        document.getElementById('fbDataBtn').textContent = '✅ 캐시 로드됨';
+                        document.getElementById('fbDataStatus').textContent = '캐시된 데이터 사용 중 (IndexedDB)';
+                        console.log('[캐시] IndexedDB에서 복원: ' + cacheKey);
+                    }
+                } catch(x) {
+                    console.warn('[캐시] IndexedDB 복원 실패:', x);
+                }
+            }
+            await changePeriod(selector.value);
+        }
+        
+        selector.addEventListener('change', function() {
+            changePeriod(this.value);
+        });
+    });
+    </script>
+</body>
+</html>
