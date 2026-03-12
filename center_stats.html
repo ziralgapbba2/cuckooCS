@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>센터별 접수·처리 현황 | J2L FLOW</title>
+<style>
+    :root {
+        --bg: #F4F6FB;
+        --card: #FFFFFF;
+        --border: #E8ECF4;
+        --text: #1E2535;
+        --sub: #6B7A99;
+        --accent: #A8BFFF;
+        --accent2: #7DD3B0;
+        --accent3: #FFE29A;
+        --up: #F87171;
+        --down: #60A5FA;
+        --nav-bg: #1E2535;
+        --shadow: 0 4px 20px rgba(30,37,53,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── Nav ── */
+    .main-nav { display: flex; align-items: center; gap: 8px; background: var(--nav-bg); padding: 12px 24px; flex-wrap: wrap; }
+    .nav-button { padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65); text-decoration: none; transition: all .2s; }
+    .nav-button:hover { color: #fff; background: rgba(255,255,255,0.12); }
+    .nav-button.active { color: #fff; background: rgba(168,191,255,0.25); }
+
+    /* ── Container ── */
+    .container { max-width: 1400px; margin: 0 auto; padding: 28px 20px; }
+    h1 { font-size: 1.9em; font-weight: 800; color: var(--text); }
+    .subtitle { font-size: 0.92em; color: var(--sub); margin-top: 4px; }
+
+    /* ── Period selector ── */
+    .period-row { display: flex; align-items: center; gap: 12px; margin: 18px 0; flex-wrap: wrap; }
+    .period-label { font-size: 13px; font-weight: 600; color: var(--sub); }
+    .period-selector { padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; background: var(--card); color: var(--text); cursor: pointer; outline: none; }
+    .period-info { font-size: 12px; color: var(--sub); }
+    .reload-btn { padding: 8px 16px; background: var(--accent); color: #fff; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+    .reload-btn:hover { opacity: .85; }
+
+    /* ── Error / Loading ── */
+    .loading-overlay { display: none; position: fixed; inset: 0; background: rgba(255,255,255,.75); z-index: 999; align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
+    .loading-overlay.show { display: flex; }
+    .spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { font-size: 14px; color: var(--sub); }
+    .error-banner { display: none; background: #FEF2F2; border: 1.5px solid #FECACA; color: #DC2626; padding: 12px 18px; border-radius: 10px; margin-bottom: 16px; font-size: 14px; }
+    .error-banner.show { display: block; }
+
+    /* ── File fallback ── */
+    .file-fallback { display: none; background: #FFFBEB; border: 1.5px solid #FDE68A; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; }
+    .file-fallback.show { display: block; }
+    .file-fallback h3 { font-size: 15px; margin-bottom: 10px; color: #92400E; }
+    .file-fallback p { font-size: 13px; color: #78350F; margin-bottom: 14px; line-height: 1.6; }
+    .fb-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+    .fb-label { font-size: 13px; font-weight: 600; width: 140px; color: #78350F; }
+    .fb-btn { padding: 7px 14px; background: #F59E0B; color: #fff; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    .fb-btn.loaded { background: #10B981; }
+    .fb-status { font-size: 12px; color: #059669; font-weight: 600; }
+    input[type=file] { display: none; }
+
+    /* ── KPI Cards ── */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 20px 0; }
+    .kpi-card { background: var(--card); border-radius: 14px; padding: 20px 22px; box-shadow: var(--shadow); border-left: 4px solid var(--accent); }
+    .kpi-card.green { border-left-color: var(--accent2); }
+    .kpi-card.yellow { border-left-color: var(--accent3); }
+    .kpi-card.red { border-left-color: var(--up); }
+    .kpi-label { font-size: 12px; font-weight: 600; color: var(--sub); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+    .kpi-value { font-size: 1.7em; font-weight: 800; color: var(--text); }
+    .kpi-sub { font-size: 12px; color: var(--sub); margin-top: 4px; }
+
+    /* ── Filters ── */
+    .filter-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+    .filter-bar label { font-size: 13px; font-weight: 600; color: var(--sub); }
+    .filter-select { padding: 7px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; background: var(--card); color: var(--text); cursor: pointer; outline: none; }
+    .search-input { padding: 7px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13px; width: 200px; outline: none; }
+    .search-input:focus { border-color: var(--accent); }
+    .reset-btn { padding: 7px 14px; background: var(--border); color: var(--sub); border: none; border-radius: 8px; font-size: 13px; cursor: pointer; }
+
+    /* ── Table ── */
+    .table-wrap { background: var(--card); border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
+    .table-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; border-bottom: 1.5px solid var(--border); }
+    .table-header h2 { font-size: 1.05em; font-weight: 700; }
+    .row-count { font-size: 13px; color: var(--sub); }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 900px; }
+    thead th { padding: 12px 14px; font-size: 12px; font-weight: 700; color: var(--sub); text-align: right; background: #F8FAFF; border-bottom: 2px solid var(--border); cursor: pointer; user-select: none; white-space: nowrap; position: sticky; top: 0; z-index: 1; }
+    thead th:first-child, thead th:nth-child(2) { text-align: left; }
+    thead th .sort-icon { margin-left: 4px; opacity: .4; font-size: 10px; }
+    thead th.sorted .sort-icon { opacity: 1; color: var(--accent); }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #F8FAFF; }
+    tbody td { padding: 11px 14px; font-size: 13.5px; text-align: right; color: var(--text); }
+    tbody td:first-child, tbody td:nth-child(2) { text-align: left; }
+    .center-type-badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+    .badge-설치법인 { background: rgba(168,191,255,.2); color: #5B6FA6; }
+    .badge-일반점   { background: rgba(125,211,176,.2); color: #2E7D5E; }
+    .badge-직영점   { background: rgba(255,226,154,.2); color: #92620C; }
+    .badge-etc      { background: rgba(156,163,175,.15); color: #6B7280; }
+    .num { font-variant-numeric: tabular-nums; }
+    .rate-up   { color: #EF4444; font-weight: 700; }
+    .rate-down { color: #3B82F6; font-weight: 700; }
+    .rate-flat { color: var(--sub); }
+    .proc-rate-bar { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
+    .proc-rate-bar-bg { width: 60px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .proc-rate-bar-fill { height: 100%; border-radius: 3px; background: var(--accent2); transition: width .3s; }
+    .no-data { text-align: center; padding: 40px; color: var(--sub); font-size: 14px; }
+
+    /* ── Dashboard section ── */
+    #dashSection { display: none; }
+    @media (max-width: 768px) {
+        .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        .main-nav { gap: 4px; padding: 10px 14px; }
+        .nav-button { font-size: 11px; padding: 6px 10px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text">데이터를 불러오는 중...</div>
+</div>
+
+<div class="main-nav">
+    <a href="index.html" class="nav-button">📊 서비스 접수 비교 분석</a>
+    <a href="symptom_analysis.html" class="nav-button">🔍 문의내용 증상 분석</a>
+    <a href="processing_dashboard.html" class="nav-button">📋 처리건 분석</a>
+    <a href="center_stats.html" class="nav-button active">🏢 센터별 접수·처리 현황</a>
+    <a href="converter.html" class="nav-button" style="margin-left:auto;">🔧 데이터 변환</a>
+</div>
+
+<div class="container">
+    <h1>🏢 센터별 접수·처리 현황</h1>
+    <p class="subtitle" id="subtitleText">접수 데이터(reception)와 처리 데이터(processing)를 연계 분석합니다</p>
+
+    <div class="period-row">
+        <span class="period-label">📅 분석 기간:</span>
+        <select class="period-selector" id="periodSelector" onchange="loadPeriod(this.value)">
+            <option value="">로딩 중...</option>
+        </select>
+        <span class="period-info" id="periodInfo"></span>
+    </div>
+
+    <div class="error-banner" id="errorBanner"></div>
+
+    <!-- 로컬 파일 모드 -->
+    <div class="file-fallback" id="fileFallback">
+        <h3>📁 로컬 파일 모드</h3>
+        <p>로컬(file://)에서는 자동 로딩이 불가합니다. 아래 순서로 JSON 파일을 직접 선택하세요.<br>
+        또는 로컬 서버: <code style="background:#FFF8DC;padding:2px 6px;border-radius:4px;font-size:12px;">python -m http.server 8000</code></p>
+        <div class="fb-row">
+            <span class="fb-label">① manifest.json</span>
+            <button class="fb-btn" id="fbManifestBtn" onclick="document.getElementById('fbManifestInput').click()">파일 선택</button>
+            <span class="fb-status" id="fbManifestStatus"></span>
+            <input type="file" id="fbManifestInput" accept=".json" onchange="handleLocalManifest(this)">
+        </div>
+        <div class="fb-row" id="fbReceptionRow" style="display:none;">
+            <span class="fb-label">② reception.json</span>
+            <button class="fb-btn" id="fbReceptionBtn" onclick="document.getElementById('fbReceptionInput').click()">파일 선택</button>
+            <span class="fb-status" id="fbReceptionStatus"></span>
+            <input type="file" id="fbReceptionInput" accept=".json" onchange="handleLocalFile(this,'reception')">
+        </div>
+        <div class="fb-row" id="fbProcessingRow" style="display:none;">
+            <span class="fb-label">③ processing.json</span>
+            <button class="fb-btn" id="fbProcessingBtn" onclick="document.getElementById('fbProcessingInput').click()">파일 선택</button>
+            <span class="fb-status" id="fbProcessingStatus"></span>
+            <input type="file" id="fbProcessingInput" accept=".json" onchange="handleLocalFile(this,'processing')">
+        </div>
+    </div>
+
+    <!-- 대시보드 본문 -->
+    <div id="dashSection">
+        <div class="kpi-grid" id="kpiGrid"></div>
+
+        <div class="filter-bar">
+            <label>센터구분</label>
+            <select class="filter-select" id="filterType" onchange="renderTable()">
+                <option value="">전체</option>
+            </select>
+            <label>센터명</label>
+            <input class="search-input" id="searchCenter" type="text" placeholder="센터명 검색..." oninput="renderTable()">
+            <button class="reset-btn" onclick="resetFilters()">초기화</button>
+        </div>
+
+        <div class="table-wrap">
+            <div class="table-header">
+                <h2>센터별 접수·처리 현황</h2>
+                <span class="row-count" id="rowCount"></span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th onclick="sortBy('type')" id="th-type">센터구분 <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('name')" id="th-name">센터명 <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('recLast')" id="th-recLast">전월 접수건<br><small style="font-weight:500;">(일평균)</small> <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('procLast')" id="th-procLast">전월 처리건<br><small style="font-weight:500;">(일평균)</small> <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('recThis')" id="th-recThis">당월 접수건<br><small style="font-weight:500;">(일평균)</small> <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('procThis')" id="th-procThis">당월 처리건<br><small style="font-weight:500;">(일평균)</small> <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('recRate')" id="th-recRate">접수건<br>평균 변화율 <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('procRate')" id="th-procRate">처리건<br>평균 변화율 <span class="sort-icon">↕</span></th>
+                            <th onclick="sortBy('coverage')" id="th-coverage">접수대비<br>처리율 <span class="sort-icon">↕</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ================================================================
+// 상태
+// ================================================================
+var manifest = null;
+var localCache = {};         // { reception: {...}, processing: {...} }
+var isLocal = location.protocol === 'file:';
+var tableData = [];          // 계산된 행 배열
+var sortKey = 'recThis';
+var sortAsc = false;
+var lastMonth = '';
+var thisMonth = '';
+
+// ================================================================
+// 초기화
+// ================================================================
+(async function init() {
+    if (isLocal) {
+        document.getElementById('fileFallback').classList.add('show');
+        return;
+    }
+    showLoading();
+    try {
+        var res = await fetch('./manifest.json?t=' + Date.now());
+        if (!res.ok) throw new Error('manifest.json 로드 실패');
+        manifest = await res.json();
+        populatePeriods();
+        var periods = manifest.periods.slice().sort((a,b) => b.id.localeCompare(a.id));
+        if (periods.length) await loadPeriod(periods[0].id);
+    } catch(e) {
+        showError(e.message);
+    } finally {
+        hideLoading();
+    }
+})();
+
+function populatePeriods() {
+    var sel = document.getElementById('periodSelector');
+    sel.innerHTML = '';
+    var periods = (manifest.periods || []).slice().sort((a,b) => b.id.localeCompare(a.id));
+    periods.forEach(function(p) {
+        var opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = p.label || p.id;
+        sel.appendChild(opt);
+    });
+}
+
+// ================================================================
+// 데이터 로딩
+// ================================================================
+async function loadPeriod(periodId) {
+    if (!periodId) return;
+    showLoading();
+    hideError();
+    try {
+        var [recRes, procRes] = await Promise.all([
+            fetch('data/' + periodId + '-reception.json?t=' + Date.now()),
+            fetch('data/' + periodId + '-processing.json?t=' + Date.now())
+        ]);
+        if (!recRes.ok)  throw new Error(periodId + '-reception.json 로드 실패');
+        if (!procRes.ok) throw new Error(periodId + '-processing.json 로드 실패');
+        var recData  = await recRes.json();
+        var procData = await procRes.json();
+        processBothData(recData, procData, periodId);
+    } catch(e) {
+        showError(e.message);
+    } finally {
+        hideLoading();
+    }
+}
+
+// ================================================================
+// 데이터 처리 (핵심 로직)
+// ================================================================
+function processBothData(recData, procData, periodId) {
+    // ── 1. reception: 전체 집계에서 센터별 접수건 + 영업일수 추출 ──
+    var agg = recData.aggregated_data && recData.aggregated_data['전체|전체|전체'];
+    if (!agg) {
+        showError('reception.json에서 전체|전체|전체 집계를 찾을 수 없습니다.');
+        return;
+    }
+
+    var monthlyStats = agg.monthly_stats || {};
+    var monthKeys    = Object.keys(monthlyStats).sort();
+    lastMonth = monthKeys[0] || '';
+    thisMonth = monthKeys[monthKeys.length - 1] || '';
+
+    // 영업일수 역산 (접수건수 / 일평균접수건)
+    var msL = monthlyStats[lastMonth] || {};
+    var msT = monthlyStats[thisMonth] || {};
+    var wdL = (msL['일평균접수건'] > 0) ? Math.round(msL['접수건수'] / msL['일평균접수건']) : 1;
+    var wdT = (msT['일평균접수건'] > 0) ? Math.round(msT['접수건수'] / msT['일평균접수건']) : 1;
+
+    var locDetail    = agg.locations_detail || {};
+    var locToCenter  = recData.location_to_center || {};
+
+    // ── 2. processing: rows를 이관처명(센터명) + 처리월 기준으로 집계 ──
+    var procRows = (procData.rows || []);
+    var procByCenter = {}; // { 센터명: { lastMonth: N, thisMonth: N } }
+
+    // 처리월 컬럼 존재 여부 확인
+    var hasProcMonth = procRows.some(function(r) { return r['처리월'] && r['처리월'].length >= 7; });
+
+    procRows.forEach(function(row) {
+        // 이관처명 우선, 없으면 이관처 코드로 폴백
+        var center = row['이관처명'] || row['이관처'] || '';
+        var pm     = row['처리월'] || '';
+        var cnt    = row['건수'] || 0;
+        if (!center) return;
+        if (!procByCenter[center]) procByCenter[center] = { lastMonth: 0, thisMonth: 0 };
+        if (!hasProcMonth) {
+            // 처리월 없으면 전체를 당월로 간주
+            procByCenter[center].thisMonth += cnt;
+        } else if (pm === lastMonth) {
+            procByCenter[center].lastMonth  += cnt;
+        } else if (pm === thisMonth) {
+            procByCenter[center].thisMonth  += cnt;
+        }
+    });
+
+    // ── 3. 센터명 기준으로 join ──
+    tableData = [];
+    Object.keys(locDetail).forEach(function(centerName) {
+        var rec  = locDetail[centerName];
+        var proc = procByCenter[centerName] || { lastMonth: 0, thisMonth: 0 };
+        var type = locToCenter[centerName] || '기타';
+
+        var recL  = rec.lastMonth  || 0;
+        var recT  = rec.thisMonth  || 0;
+        var procL = proc.lastMonth;
+        var procT = proc.thisMonth;
+
+        var recAvgL  = wdL > 0 ? recL  / wdL : 0;
+        var recAvgT  = wdT > 0 ? recT  / wdT : 0;
+        var procAvgL = wdL > 0 ? procL / wdL : 0;
+        var procAvgT = wdT > 0 ? procT / wdT : 0;
+
+        var recRate  = recAvgL  > 0 ? ((recAvgT  - recAvgL)  / recAvgL  * 100) : (recAvgT  > 0 ? 100 : 0);
+        var procRate = procAvgL > 0 ? ((procAvgT - procAvgL) / procAvgL * 100) : (procAvgT > 0 ? 100 : 0);
+        var coverage = recT > 0 ? (procT / recT * 100) : 0;
+
+        tableData.push({
+            name: centerName, type: type,
+            recL: recL, recT: recT, procL: procL, procT: procT,
+            recAvgL: recAvgL, recAvgT: recAvgT,
+            procAvgL: procAvgL, procAvgT: procAvgT,
+            recRate: recRate, procRate: procRate, coverage: coverage
+        });
+    });
+
+    // ── 4. 필터 셀렉트 채우기 ──
+    var types = [...new Set(tableData.map(r => r.type))].sort();
+    var sel = document.getElementById('filterType');
+    sel.innerHTML = '<option value="">전체</option>';
+    types.forEach(function(t) {
+        var opt = document.createElement('option');
+        opt.value = t; opt.textContent = t;
+        sel.appendChild(opt);
+    });
+
+    // ── 5. KPI 계산 ──
+    renderKPI(wdL, wdT, msL, msT);
+
+    // ── 6. 부제목 ──
+    var lmLabel = lastMonth.replace(/^(\d{4})-0?/, '$1년 ') + '월';
+    var tmLabel = thisMonth.replace(/^(\d{4})-0?/, '$1년 ') + '월';
+    document.getElementById('subtitleText').textContent =
+        '전월(' + lmLabel + ') vs 당월(' + tmLabel + ') · 센터 ' + tableData.length + '개소';
+    if (manifest) {
+        var p = manifest.periods.find(x => x.id === periodId);
+        if (p && p.generated) document.getElementById('periodInfo').textContent = '생성일: ' + p.generated;
+    }
+
+    document.getElementById('dashSection').style.display = 'block';
+    renderTable();
+}
+
+// ================================================================
+// KPI 카드
+// ================================================================
+function renderKPI(wdL, wdT, msL, msT) {
+    var totalRecL  = msL['접수건수']     || 0;
+    var totalRecT  = msT['접수건수']     || 0;
+    var totalProcL = tableData.reduce((s, r) => s + r.procL, 0);
+    var totalProcT = tableData.reduce((s, r) => s + r.procT, 0);
+    var recAvgL    = wdL > 0 ? (totalRecL  / wdL) : 0;
+    var recAvgT    = wdT > 0 ? (totalRecT  / wdT) : 0;
+    var procAvgL   = wdL > 0 ? (totalProcL / wdL) : 0;
+    var procAvgT   = wdT > 0 ? (totalProcT / wdT) : 0;
+    var recChange  = recAvgL  > 0 ? ((recAvgT  - recAvgL)  / recAvgL  * 100) : 0;
+    var procChange = procAvgL > 0 ? ((procAvgT - procAvgL) / procAvgL * 100) : 0;
+    var coverage   = totalRecT > 0 ? (totalProcT / totalRecT * 100) : 0;
+    var centerCount = tableData.length;
+
+    var lmLabel = lastMonth.replace(/^(\d{4})-0?/,'') + '월';
+    var tmLabel = thisMonth.replace(/^(\d{4})-0?/,'') + '월';
+
+    document.getElementById('kpiGrid').innerHTML = `
+        <div class="kpi-card">
+            <div class="kpi-label">집계 센터</div>
+            <div class="kpi-value">${centerCount}</div>
+            <div class="kpi-sub">개소</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">당월(${tmLabel}) 접수 일평균</div>
+            <div class="kpi-value">${recAvgT.toFixed(1)}</div>
+            <div class="kpi-sub">전월(${lmLabel}) ${recAvgL.toFixed(1)}건 · ${recChange >= 0 ? '+' : ''}${recChange.toFixed(1)}%</div>
+        </div>
+        <div class="kpi-card green">
+            <div class="kpi-label">당월(${tmLabel}) 처리 일평균</div>
+            <div class="kpi-value">${procAvgT.toFixed(1)}</div>
+            <div class="kpi-sub">전월(${lmLabel}) ${procAvgL.toFixed(1)}건 · ${procChange >= 0 ? '+' : ''}${procChange.toFixed(1)}%</div>
+        </div>
+        <div class="kpi-card yellow">
+            <div class="kpi-label">접수 대비 처리율</div>
+            <div class="kpi-value">${coverage.toFixed(1)}<small style="font-size:.55em;font-weight:600;">%</small></div>
+            <div class="kpi-sub">당월 접수 ${totalRecT.toLocaleString()}건 · 처리 ${totalProcT.toLocaleString()}건</div>
+        </div>
+    `;
+}
+
+// ================================================================
+// 테이블 렌더
+// ================================================================
+function renderTable() {
+    var typeFilter   = document.getElementById('filterType').value;
+    var searchFilter = document.getElementById('searchCenter').value.trim().toLowerCase();
+
+    var rows = tableData.filter(function(r) {
+        if (typeFilter && r.type !== typeFilter) return false;
+        if (searchFilter && !r.name.toLowerCase().includes(searchFilter)) return false;
+        return true;
+    });
+
+    // 정렬
+    var keyMap = {
+        type: 'type', name: 'name',
+        recLast: 'recAvgL', procLast: 'procAvgL',
+        recThis: 'recAvgT', procThis: 'procAvgT',
+        recRate: 'recRate', procRate: 'procRate', coverage: 'coverage'
+    };
+    var field = keyMap[sortKey] || 'recAvgT';
+    rows.sort(function(a, b) {
+        var av = a[field], bv = b[field];
+        if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+        return sortAsc ? av - bv : bv - av;
+    });
+
+    document.getElementById('rowCount').textContent = rows.length + '개 센터';
+
+    var lmLabel = lastMonth.replace(/^(\d{4})-0?/,'') + '월';
+    var tmLabel = thisMonth.replace(/^(\d{4})-0?/,'') + '월';
+
+    var html = rows.map(function(r) {
+        var badgeClass = ({ '설치법인':'badge-설치법인','일반점':'badge-일반점','직영점':'badge-직영점' })[r.type] || 'badge-etc';
+        var recRateCls = r.recRate > 0 ? 'rate-up' : r.recRate < 0 ? 'rate-down' : 'rate-flat';
+        var procRateCls = r.procRate > 0 ? 'rate-up' : r.procRate < 0 ? 'rate-down' : 'rate-flat';
+        var recRateStr  = (r.recRate  > 0 ? '+' : '') + r.recRate.toFixed(1)  + '%';
+        var procRateStr = (r.procRate > 0 ? '+' : '') + r.procRate.toFixed(1) + '%';
+        var coverFill   = Math.min(r.coverage, 100);
+        var coverCls    = r.coverage >= 90 ? 'rate-down' : r.coverage >= 70 ? '' : 'rate-up';
+
+        return `<tr>
+            <td><span class="center-type-badge ${badgeClass}">${r.type}</span></td>
+            <td style="font-weight:600;">${r.name}</td>
+            <td class="num">${r.recAvgL.toFixed(1)}<small style="color:var(--sub);font-size:11px;"> 건</small></td>
+            <td class="num">${r.procAvgL.toFixed(1)}<small style="color:var(--sub);font-size:11px;"> 건</small></td>
+            <td class="num" style="font-weight:700;">${r.recAvgT.toFixed(1)}<small style="color:var(--sub);font-size:11px;"> 건</small></td>
+            <td class="num" style="font-weight:700;">${r.procAvgT.toFixed(1)}<small style="color:var(--sub);font-size:11px;"> 건</small></td>
+            <td class="num ${recRateCls}">${recRateStr}</td>
+            <td class="num ${procRateCls}">${procRateStr}</td>
+            <td>
+                <div class="proc-rate-bar">
+                    <span class="num ${coverCls}" style="min-width:42px;">${r.coverage.toFixed(1)}%</span>
+                    <div class="proc-rate-bar-bg"><div class="proc-rate-bar-fill" style="width:${coverFill}%;background:${r.coverage>=90?'#60A5FA':r.coverage>=70?'#7DD3B0':'#F87171'}"></div></div>
+                </div>
+            </td>
+        </tr>`;
+    }).join('');
+
+    document.getElementById('tableBody').innerHTML = html || `<tr><td colspan="9" class="no-data">조건에 맞는 센터가 없습니다.</td></tr>`;
+}
+
+// ================================================================
+// 정렬
+// ================================================================
+function sortBy(key) {
+    if (sortKey === key) sortAsc = !sortAsc;
+    else { sortKey = key; sortAsc = false; }
+
+    document.querySelectorAll('thead th').forEach(function(th) {
+        th.classList.remove('sorted');
+        th.querySelector('.sort-icon').textContent = '↕';
+    });
+    var th = document.getElementById('th-' + key);
+    if (th) {
+        th.classList.add('sorted');
+        th.querySelector('.sort-icon').textContent = sortAsc ? '↑' : '↓';
+    }
+    renderTable();
+}
+
+function resetFilters() {
+    document.getElementById('filterType').value = '';
+    document.getElementById('searchCenter').value = '';
+    renderTable();
+}
+
+// ================================================================
+// 로컬 파일 처리
+// ================================================================
+function handleLocalManifest(input) {
+    if (!input.files[0]) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            manifest = JSON.parse(e.target.result);
+            populatePeriods();
+            document.getElementById('fbManifestBtn').classList.add('loaded');
+            document.getElementById('fbManifestBtn').textContent = '✅ 로드 완료';
+            document.getElementById('fbManifestStatus').textContent = manifest.periods.length + '개 기간';
+            document.getElementById('fbReceptionRow').style.display  = 'flex';
+            document.getElementById('fbProcessingRow').style.display = 'flex';
+        } catch(err) { showError('manifest.json 파싱 오류: ' + err.message); }
+    };
+    reader.readAsText(input.files[0]);
+}
+
+function handleLocalFile(input, type) {
+    if (!input.files[0]) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            localCache[type] = JSON.parse(e.target.result);
+            var btnId    = type === 'reception' ? 'fbReceptionBtn'  : 'fbProcessingBtn';
+            var statusId = type === 'reception' ? 'fbReceptionStatus' : 'fbProcessingStatus';
+            document.getElementById(btnId).classList.add('loaded');
+            document.getElementById(btnId).textContent = '✅ 로드 완료';
+            document.getElementById(statusId).textContent = input.files[0].name;
+            // 둘 다 로드됐으면 처리
+            if (localCache.reception && localCache.processing) {
+                var periodId = document.getElementById('periodSelector').value;
+                processBothData(localCache.reception, localCache.processing, periodId);
+            }
+        } catch(err) { showError(type + ' JSON 파싱 오류: ' + err.message); }
+    };
+    reader.readAsText(input.files[0]);
+}
+
+// ================================================================
+// 유틸
+// ================================================================
+function showLoading() { document.getElementById('loadingOverlay').classList.add('show'); }
+function hideLoading() { document.getElementById('loadingOverlay').classList.remove('show'); }
+function showError(msg) {
+    var el = document.getElementById('errorBanner');
+    el.textContent = '⚠️ ' + msg;
+    el.classList.add('show');
+}
+function hideError() { document.getElementById('errorBanner').classList.remove('show'); }
+</script>
+</body>
+</html>

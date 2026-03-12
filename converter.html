@@ -752,7 +752,8 @@ const COLUMN_DEFS = {
         { id: 'payment', label: '유무상구분', required: false, hint: 'Y/N' },
         { id: 'processMonth', label: '처리월', required: false, hint: '2026-01 형태' },
         { id: 'processDate', label: '처리일자', required: false, hint: '일자별 차트용 (날짜 컬럼)' },
-        { id: 'center', label: '이관처', required: false, hint: '센터명' },
+        { id: 'center', label: '이관처', required: false, hint: '이관처 코드' },
+        { id: 'centerName', label: '이관처명(센터명)', required: false, hint: '센터 이름 (center_stats 연계용)' },
         { id: 'count', label: '건수', required: false, hint: '숫자 (없으면 1건씩 카운트)' },
     ]
 };
@@ -772,7 +773,8 @@ const AUTO_MAP_HINTS = {
     'repair': ['수리', '수리유형', '수리구분'],
     'processType': ['처리구분', '처리유형'],
     'processMonth': ['처리월', '처리년월'],
-    'center': ['이관처', '처리센터', '센터명'],
+    'center': ['이관처', '처리센터'],
+    'centerName': ['이관처명', '센터명', '처리센터명', '서비스센터명'],
     'count': ['건수', '수량', 'count'],
     'baseMonth': ['기준월', '기준년월', '접수월'],
 };
@@ -1339,7 +1341,8 @@ function convertProcessing(rows, map, periodId) {
         const repair = map.repair      ? (row[map.repair]      || '') : '';
         const proc   = map.processType ? (row[map.processType] || '') : '';
         const pay    = map.payment     ? (row[map.payment]     || '') : '';
-        const center = map.center      ? (row[map.center]      || '') : '';
+        const center     = map.center     ? (row[map.center]     || '') : '';
+        const centerName = map.centerName ? (row[map.centerName] || '') : '';
         let   pm     = '';
         if (map.processMonth) {
             let raw = row[map.processMonth];
@@ -1365,8 +1368,8 @@ function convertProcessing(rows, map, periodId) {
             }
         }
 
-        const key = [prod, c1, c2, repair, proc, pay, pm, center].join(' ');
-        if (!groups[key]) groups[key] = { prod, c1, c2, repair, proc, pay, pm, center, cnt: 0 };
+        const key = [prod, c1, c2, repair, proc, pay, pm, center, centerName].join(' ');
+        if (!groups[key]) groups[key] = { prod, c1, c2, repair, proc, pay, pm, center, centerName, cnt: 0 };
         groups[key].cnt += cnt;
     });
 
@@ -1381,6 +1384,7 @@ function convertProcessing(rows, map, periodId) {
         if (g.pay)    out['유무상구분'] = g.pay;
         if (g.pm)     out['처리월']   = g.pm;
         out['이관처']  = g.center || '';
+        out['이관처명'] = g.centerName || '';  // 센터별 현황 연계용
         out['건수'] = g.cnt;
         return out;
     });
