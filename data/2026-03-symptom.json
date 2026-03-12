@@ -1,0 +1,4681 @@
+{
+  "meta": {
+    "period": "2026-03",
+    "totalRecords": 111092,
+    "months": [
+      "2026-02",
+      "2026-03"
+    ],
+    "generated": "2026-03-11T23:56:37.395Z"
+  },
+  "products": [
+    "정수기",
+    "밥솥",
+    "비데",
+    "음식물처리기",
+    "인덕션레인지",
+    "식기세척기",
+    "무선청소기",
+    "공기청정기",
+    "기타",
+    "로봇청소기"
+  ],
+  "data": {
+    "전체": {
+      "정수기": {
+        "total_count": 51134,
+        "symptoms": [
+          {
+            "symptom": "냉수미지근",
+            "count": 73,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "온수안나옴",
+            "count": 58,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "온수미지근",
+            "count": 53,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(내용없음)",
+            "count": 50,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "소음심합니다",
+            "count": 45,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "온수 안나옴",
+            "count": 43,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "온수안됨",
+            "count": 43,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "얼음안나옴",
+            "count": 39,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "누수",
+            "count": 34,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "물안나옴",
+            "count": 34,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "얼음안나옵니다",
+            "count": 31,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "온수 미지근",
+            "count": 29,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "얼음 안나옴",
+            "count": 29,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "온수안나옵니다",
+            "count": 29,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "소음",
+            "count": 28,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "냉수 미지근",
+            "count": 24,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "냉수안됨",
+            "count": 22,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "물안나옵니다",
+            "count": 21,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "물 안나옴",
+            "count": 20,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "온수안됩니다",
+            "count": 20,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "냉수안나옴",
+            "count": 20,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "얼음이 안나와요",
+            "count": 20,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "물맛이상",
+            "count": 19,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "소음심함",
+            "count": 19,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "온수가 안나옵니다",
+            "count": 17,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "배수호스 찢어짐/ 코크오염 / 온수안나옴/ 냉수코크쪽 물 똑똑 떨어짐 /바닥물샘 01088398690",
+            "count": 17,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "온수출수안됨",
+            "count": 16,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "온수가 안나옴",
+            "count": 16,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "냉수 안나옴",
+            "count": 15,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "얼음이 안나옴",
+            "count": 15,
+            "percentage": 0.03
+          }
+        ]
+      },
+      "밥솥": {
+        "total_count": 25056,
+        "symptoms": [
+          {
+            "symptom": "증기누설",
+            "count": 8,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "김샘",
+            "count": 8,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "조기배출",
+            "count": 8,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "냄새",
+            "count": 7,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "설익음",
+            "count": 7,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "밥마름",
+            "count": 7,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "ECO에러",
+            "count": 6,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "증기샘",
+            "count": 6,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "취사불",
+            "count": 6,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "E01 에러",
+            "count": 5,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "e01",
+            "count": 5,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "빽커버걸림",
+            "count": 5,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "설익음.추쪽김샘",
+            "count": 5,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "오븐.패킹.전체점검",
+            "count": 5,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "퍼석함",
+            "count": 5,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "e01에러",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "마름",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "에러",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "오작동",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "증기 누설",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "찰기무",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "패킹.전체점검",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "Edo에러",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "EO1에러",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "E-T에러",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "IH:F에러",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "김샘/퍼석함",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "내솥없이 쌀투입",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "물떨어짐.밥마름",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "보온안됨",
+            "count": 4,
+            "percentage": 0.02
+          }
+        ]
+      },
+      "비데": {
+        "total_count": 14835,
+        "symptoms": [
+          {
+            "symptom": "02-13/비데 오링 불량//무상/010-8638-9389 컨택/ 깃플쳇 경기북부법인지국  김영식",
+            "count": 33,
+            "percentage": 0.22
+          },
+          {
+            "symptom": "변좌흔들림",
+            "count": 24,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "변좌 흔들림",
+            "count": 20,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "노즐안나옵니다",
+            "count": 12,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "02-04/필터쪽에서 물샘 / 버튼안눌림//무상/본관 전체. 교육관전체. 대학원전체/담당자 : 01048542984",
+            "count": 11,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "리모컨작동안됨",
+            "count": 11,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "비데 작동불량으로 A/S 접수 요청입니다",
+            "count": 11,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "노즐 안나옴",
+            "count": 10,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "노즐안나옴",
+            "count": 10,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "비데 작동안됩니다",
+            "count": 10,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "누수및점검",
+            "count": 9,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "리모컨 작동안됩니다",
+            "count": 9,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "비데가 흔들거린다",
+            "count": 9,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "작동안됨",
+            "count": 9,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "리모컨 작동안됨",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "비데흔들거림",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "노즐작동안됩니다",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "누수",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "누수및 점검요청",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "변좌 온열안됩니다",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "전원무",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "전원안들어옴",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "전원이 안들어옴",
+            "count": 8,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "2층 3층 비데 전체적으로 변좌 안따뜻함",
+            "count": 7,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "노즐 나오다 멈춤",
+            "count": 7,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "비데 고정안됨",
+            "count": 7,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "물안나옴",
+            "count": 7,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "버튼안눌림 / 전원안켜짐 / 필터쪽 물샘 010 6603 9298",
+            "count": 7,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "변좌차가움",
+            "count": 7,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "필터 교체 이후 비데 누수 발생, 본관 1층 8대 모두 점검 요청",
+            "count": 7,
+            "percentage": 0.05
+          }
+        ]
+      },
+      "음식물처리기": {
+        "total_count": 4183,
+        "symptoms": [
+          {
+            "symptom": "건조안됨",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "건조통 이상 알림",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "10.화.수리후동증.건조통교환요청시AS만받고있음.증상개선되지않음.건조통교환요청.유무상.구입1년미만",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "3.04일 음식물이  쌓여있다고 함 /돌아가지 않는것 같다고함/  01023583388 /1-18-250626-0009",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "건조통 이상",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "모터이상",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "소음",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "오동작",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "작동안됨",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "전원안들어옴",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "팬모터 이상",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "팬모터이상",
+            "count": 3,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FD||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FD||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CFDBG202MOG||직접입력(10자이내)||필터교체||1년 이상||hyeok0222@naver.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||동작 관련||팬모터에 이상이 있습니다. (알림음)||1년 이상||973181@naver.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||직접입력(10자이내)||뚜껑 불량 & UV 램프 불량||1년 이상||tjdals940610@naver.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDC151MOWM||소음 관련||딱딱 소리 발생(이전과 동일)||1년 미만||comjdh@gmail.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDD301DCNW||동작 관련||물샘||1년 이상||tto0073@naver.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDD301DCNW||전원부 관련||음식물처리중 전원 나간뒤 코드 꽂아도||1년 미만||numhey@nate.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDD301DCNW||전원부 관련||전원안켜짐||1년 이상||lee03012001@nate.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDEFF201DCNW||동작 관련||음식물 처리가 안되요||1년 미만||tanpopokim1@naver.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDEFF201DCNW||전원부 관련||전원안켜짐||1년 미만||nadidas7730@naver.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDEFF201DCNW||전원부 관련||전원안켜짐||1년 미만||sin621113@kakao.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDEFF201DCNW||직접입력(10자이내)||건조통에 문제가 있다고 안내가 나와요||1년 미만||fneathe@gmail.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDENL201DCGW||냄새 관련||필터를 교환해도 매작동시 악취가 남||1년 미만||cha1992@nate.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDENL201DCGW||동작 관련||건조통 밑에 톱니모양 부품이 없어짐||1년 미만||geo0202@kakao.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDENL201DCGW||동작 관련||건조통이 이상이 있다고 알람||1년 미만||rhkswl12@naver.com",
+            "count": 2,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDENL201DCGW||동작 관련||건조통이상 알림||1년 미만||",
+            "count": 2,
+            "percentage": 0.05
+          }
+        ]
+      },
+      "인덕션레인지": {
+        "total_count": 3189,
+        "symptoms": [
+          {
+            "symptom": "20금.CIR-EP301FAW쿠팡로켓배송무상설치 요청.2월18일수령",
+            "count": 5,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "2.21토/설치품설치/비용수긍/설치전설치환경관련통화필요공간안된다면케이스필요안내.수긍/케이스유상안내",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "3월3일.화.쿠팡구매제품으로신규설치희망.15cm프리스탠딩케이스로설치희망.유상.방문전연락희망및부재시컨택번호01085490822",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "용기인식불",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "전기렌지 설치요청/중고구매하심/유상안내",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "u에러",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "<안전건 본사접수> 파워코드 소손으로 안동스토어 출장 시 설치불량으로 확인되어 설치법인 이관 연장코드 소손으로 재설치 필요건 담당 : 장효진사원, 손명기점장",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "2.20.금/하단누전확인됨 작동불/유무상/컨.01050905770/3052506020196",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "2/05목&gt;2화구 동시사용시 가열지연.20분넘게 가열안됨.유/무.3-05-250825-0072",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "3.9월/인덕션이전설치/비용수긍/일시불",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "3.화)빠른방문/쿠팡로켓배송무상설치/수령3일",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "CIR-EP301FW/36개월차상판교체서비스/고객만족팀김소정님요청건",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "냄비인식불",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "상판 파손",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "설치/2월12일/빌트인",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "설치/2월26일/빌트인",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "전원 무",
+            "count": 3,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "123",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||직접입력(10자이내)||동작무||1년 이상||",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIHRA302FB||전원부 관련||전원이 안들어옵니다||1년 이상||realsakpung@naver.com",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIHRD303FBSG||전원부 관련||상판 유리 파손 ||1년 이상||bonoyik@naver.com",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIHRF301FB||에러/표시창 관련||U자 표시가 작동되지 않음||1년 이상||swmo1@kakao.com",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIHRFL304FB||전원부 관련||퍽 하는 소리와 함께 전기 합선 소리||1년 이상||kickpum@naver.com",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIHRFL306FB||구조/외관||인덕션유리깨짐||1년 이상||01064274378@hanmail.net",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIRE301FW||직접입력(10자이내)||버튼 안눌림 max 안됨||1년 이상||hyarasi81@naver.com",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIREP345FAP||전원부 관련||전원키면 집안전체 전원이 나감||1년 미만||jtop123@naver.com",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIRGP301FAP||직접입력(10자이내)||대형 화구 작동안됩니다||1년 미만||",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)||주방가전||전기레인지||CIRH1750||직접입력(10자이내)||냄비 인식못함||1년 이상||chm1250@naver.com",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(온라인)|전기레인지|설치시  왼쪽  싱크대  사이뜸|설치사이드 틀이 너무높아 불편합니다|1개월 미만|",
+            "count": 2,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "(챗봇)/일반///1년 이상//전원이 켜지지 않음",
+            "count": 2,
+            "percentage": 0.06
+          }
+        ]
+      },
+      "식기세척기": {
+        "total_count": 3101,
+        "symptoms": [
+          {
+            "symptom": "이전설치",
+            "count": 10,
+            "percentage": 0.32
+          },
+          {
+            "symptom": "(내용없음)",
+            "count": 5,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "설치/3월5일",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "03.03화/e4에러.실누수확인안됨.배수호수싱크대로확인됨/구매1년이내/유무상/",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "16.월/이전설치비용수긍",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.20금//설치요청/쿠팡로켓배송.일시불",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.27.설치폼설치요청/비용안내/안내책자에모델명2개기재됨CDW-BD0610T",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.27금/설치요청/일시불/쿠쿠스토어수지점/25.11.6구매/유상/46000원",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "이사로 이전설치",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "회수/3월17일/천오준석010-8401-5256/부산 사하구 낙동대로 375 전자랜드 사하점/설치/3월18일/설치품 쿠폰",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "E4",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "E4에러",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "12(목)/설치시부터코팅벗겨졌다고함.상단바스켓모서리녹씀/바스켓교체원급/방문전교체여부통화요청/3-14-250731-0038/유무상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2.20금.설치요청.6인용.유상안내.방문전화요청",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2.21토/식기세척기설치품설치/비용유상안내",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2.23.월.동작시물공급안됨.구매1개월이내.유무상.",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2.24.화/식기세척기2대설치/비용안내/추가요금안내",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2.3화/세척중간에DR코드나오며문이열린다고함/세척완료후에는문이안열림/1년이내/유무상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2.6/식기세척기설치안내/무상/쿠팡로켓배송",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2/10(화)/쿠팡로켓배송무상설치요청",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "27.금.식기세척기설치요청.비용수긍.유상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "2월11일/쿠팡로켓배송무상설치요청/제품수량1개",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "3.4/식기세척기6인용설치/쿠팡/무상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "3.4일쿠팡로켓배송으로식기세척기구매무상설치요청.유무상안내.방문전화요청",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "3월7일/설치/제품은 고객댁에 있습니다 프리스탠딩으로 설치 부탁드리겠습니다/설치품쿠폰",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "6인용식세기설치요청/모델명확인안됨/기사와통화시모델명말씀해주시길안내/비용안내/설치환경에따라추가비용발생될수있음안내",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "9일(월)/설치품설치/유상/비용안내완료",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "E4에러.본체바닥누수.벨브잠금불.중고거래.1년이상유상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "간헐적누수",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "누수",
+            "count": 3,
+            "percentage": 0.1
+          }
+        ]
+      },
+      "무선청소기": {
+        "total_count": 1390,
+        "symptoms": [
+          {
+            "symptom": "전원무",
+            "count": 4,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "충전안됨",
+            "count": 3,
+            "percentage": 0.22
+          },
+          {
+            "symptom": "먼지통 파손",
+            "count": 3,
+            "percentage": 0.22
+          },
+          {
+            "symptom": "오동작",
+            "count": 3,
+            "percentage": 0.22
+          },
+          {
+            "symptom": "작동중 꺼짐",
+            "count": 3,
+            "percentage": 0.22
+          },
+          {
+            "symptom": "충전 안됨",
+            "count": 3,
+            "percentage": 0.22
+          },
+          {
+            "symptom": "충전불",
+            "count": 3,
+            "percentage": 0.22
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAME1410UG||직접입력(10자이내)||베터리교체해도 충전이 않되요||1년 이상||ssunhee87@naver.com",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCG820NWM||직접입력(10자이내)||작동중 꺼짐. 모터문제로 생각됨||1년 미만||kimran129@naver.com",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCG820NWM||직접입력(10자이내)||충전이 안되요. 충전불도 안들어옴||1년 이상||kio730@nate.com",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "1.20.화.청소기.모델명확인불/1년미만  쿠팡구매/완충은되나작동중45초만에꺼져버림/유무상안내",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "2.12(목)/충전안됨.충전시5초있다가꺼짐/방문전구입영수증지참해야하는지통화요청/구입1년내/유무상",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "2.20.금.헤드솔작동안됨.구매1년이상.유무상.",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "2.20금/필터통플라스틱고리걸리는부분이깨짐.방문전유무상확인요청/1년미만/무상",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "2.26.목/리퍼브제품구매/설치후충전되지않음/접촉부위이상/거치대에충전되지않음/가장늦은시간방문요청/구매이틀/무상/불량판정요청/환불요청",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "20/금/배기필터1개누락/워셔블필터1개누락/누락된부품요청/쿠쿠몰/구매1주/리퍼브/유무상/",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "24.화.사용중꺼짐.모터에서삐소리남.구입9개월미만.유무상",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "25.수.배터리하루종일충전해도100%로충전안됨.보조배터리도충전해도충전안되어있음.흡입력약함.구매3.4개월.유무상",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "26(목)충전안됨.적색램프점멸.구입25년4월.유무상",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "3.3(화)/오후세시이후방문요청/스테이션먼지통비움작동불/충전불/구입한달미만/유무상",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "3.4수/전원은들어오나.충전안됨/작동무/오후2시에서4시30분사이방문희망/1년미만/01072495282",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "3월4일/수/5분작동시작동안됨/흡입되지않음/구입3달정도/유무상안내",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "금방꺼짐",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "동작안됨",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "동작이상",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "먼지통 결합안됨",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "먼지통 고정 안됨",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "먼지통 닫히지 않음",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "먼지통 안닫힘",
+            "count": 2,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "먼지통 체결 불",
+            "count": 2,
+            "percentage": 0.14
+          }
+        ]
+      },
+      "공기청정기": {
+        "total_count": 1216,
+        "symptoms": [
+          {
+            "symptom": "소음",
+            "count": 3,
+            "percentage": 0.25
+          },
+          {
+            "symptom": "소리가 심함",
+            "count": 3,
+            "percentage": 0.25
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC12R20FNW||직접입력(10자이내)||사용중 전원이 꺼짐||1개월 미만||",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC17TV20FNG||직접입력(10자이내)||소음이있어요 ||1년 이상||elfkmk01@naver.com",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC35U20FWS||직접입력(10자이내)||소음이 있어요||1년 이상||elfkmk01@naver.com",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "03.03.화/공기가나오는부분아이들장난감들어감소음발생/전원코드분리/1042401160130/유무상",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "03.06/건물화재로 분진,연기에 노출.as요청/유상/청정기 2대/1042509220178",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "2.27금/작동시걸리는소리가나며작동안됨.재인가시에도증상반복됨/1년미만/무상",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "2/20금>작동시작후 바로 청정도표시 빨강켜짐.구입1주일.유/무",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "24일.화.코드선끊어짐.1년이상.유상.방문전연락희망.결제수단확인으로선연락희망",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "3.3/불이번쩍번쩍하더니전원무/무상/1-04-210715-0041",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "3.3화.조명어두우면청정표시등꺼짐안내.청정단계작동무.고령으로전문가가전화해달라요청.구매최근.유무상.",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "3/3(화)2.26신규설치함/제품밑에케이스벌어짐/무상/1042602230044",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "AC-12R20FNW(S) 제품 소음으로 불량 교환 진행 고객입니다   서대구지점에서  a/s 갈수있도록 요청드립니다 /무상/  1042602200249",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "AC-28AH10FNW(S)/작동 잘 안됨. A/S 접수요청 // 서비스 접수시 꼭!! 블루몬케어(중부산) 법인지점으로 이관 접수 부탁드립니다./무상/1042502190256",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "공기청정기 불만들어오고 작동이 되지않음 1042407100062",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "공기청정기 빨간불이 계속 들어옴 AS요청합니다",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "공청기 작동안됩니다",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "공청기에서 에러메세지가 뜬다고 함  1042311130114  /무상/",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "냄새",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "메뉴버튼 전원버튼이 안먹힘//현대제철 들어가기 힘드실꺼 같아서 공기청정기 당진지국 사무실에 옴겨놓았습니다/충남 당진시 무수동로113 201호 컨택번호 010-7726-1293/1042306150069/무상/",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음 심함",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음 심함/무상/1042407030223",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음발생",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음발생  컨 01029363510 / 1042404260344 /무상/",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음심함",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음심함 방문시 010-4758-9650 / 1042406070139/무상/",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음심해서 잠을 못잔다고합니다",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "소음이 심함 1042404080167 /무상/",
+            "count": 2,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "이물질이 들어갔는지 딱딱소리가 남 1042504250330 /무상/",
+            "count": 2,
+            "percentage": 0.16
+          }
+        ]
+      },
+      "기타": {
+        "total_count": 1189,
+        "symptoms": [
+          {
+            "symptom": "AC-09AA10FWH 어제설치받음/ 벽걸이에서 떨어짐 /강성클래임 빠른방문요청",
+            "count": 3,
+            "percentage": 0.25
+          },
+          {
+            "symptom": "E1.AS접수 CDW-BS1410UWE",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "02.26목/투도어맨장고모델면확인불/소음심함/구매2개월/유무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "02.28.토/쿠팡로켓배송무상설치요청/지난주수령/방문전꼭연락요청",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "03.화.6인용식기세척기.모델명확인불.작동하려고하면꺼짐.불안들어옴.구입1년이상.유상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "04.수.CCD-A0310AW,미니건조기.사용중전원나감.전원무.구입한달.유무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "12.목/모델명확인불,비데/전원은들어오나물안나옴/일시불,3년이상/유상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "12.목/모델명확인불,비데/전원은들어오나물안나옴/일시불,3년이상/유상/오전방문희망",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "13(금) 전기레인지3구중 1구 가열불/모델명확인불/스탠드케이스설치/유상/구입10년",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "19.목.인덕션3구.이전설치문의.빌트인설치관련문의.통화요청",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.11수.인덕션이전설치.비용관련상딤팔요함.유상안내.방문전에꼭전화달라고요청하심.방문전화요청",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.19/유상안내/2.10일경/가능하면 2.12당일방문요청,가능여부연락요청",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.19목.식기세척기6인용.모델명확인불.간헐적누수.구입2년이상.유상안내.방문전화요청",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.20.금/설치품설치/당월구매/설치품쿠폰.쿠팡.무상/컨01027052758",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.20일 신규설치/쿠팡구매/무상+@ / 오전방문요청/상수도/컨: 01086192214 /CIR-E349FM",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.23/쿠팡로켓배송무상설치요청/2.20수령일",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.26/모델하우스 인덕션레인지 목업 설치를 위한 설치품 쿠폰 접수/고객지원과 김희진 요청",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.26/쿠팡로켓배송설치대상/무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.27/쿠팡로켓배송무상설치요청/제품수령26일",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.4(수)/쿠팡로켓배송설치/제품수령일2.2일",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.5/AS/1년이내구매상품/에러코드/dr/컨택:01053476697",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.6금.식기세척기모델명확인불.구입2개월.헹굼1회추가후1시간지나면자동으로문열림.유무상.방문전화요청",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2.9월.CIHR-HLT313HFS.설치요청,유상안내.방문전화요청필수",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "20.금/E1에러나옴/ 식기세척기모델명확인불 6인용/ 유무상안내 모르는번호잘안받으심문자발송요청하심",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "27금/오후방문요청/제품설치요청/구입1년이상되었는데설치하지않은새제품/유상안내/빌트인",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2월20일 방문요청 / 안마의자 가죽해짐 패드 교체요청 / 비용안내 / 연: 01020413420",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "2월21일 설치요청 / 인덕션 쿠팡 무상설치 / 연: 01027966629",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "3.3.화.제습기모델명확인불.E-9에러코드확인.1년이상.유상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "3.3.화.쿠팡로켓배송무상설치요청.제품도착완.무상+@안내",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "3.3.화/쿠팡로켓배송어제수령/무상설치/설치환경에따라추가비용발생될수있음안내 CIR-EP349FGP/4시이후희망",
+            "count": 2,
+            "percentage": 0.17
+          }
+        ]
+      },
+      "로봇청소기": {
+        "total_count": 1076,
+        "symptoms": [
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||공레패드 고장||1년 미만||4821lee@hanmail.net",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBNLAC0520W||직접입력(10자이내)||AS이후 소음+물걸레청소 물쏟아짐||1년 미만||ayoung9409@naver.com",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBNLAC0520W||직접입력(10자이내)||정수통 인식 잘 안됨||1년 미만||lyellowl@naver.com",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCCFFAC1610W||직접입력(10자이내)||똑같음물충전만하고청소안함||1년 미만||lucky2403@nate.com",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "13금.걸레충전후작동시스테이션에서안나옴/2달구매.유무상.",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "2.25(수)/오후방문요청/충전안됨/유무상/구입1년안됨",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "2.25.수/스테이션복귀전에거실바닥에물버림/물흥건함/교환요청/구매두달/무상/",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "2.26(목)/전원무/유무상/구입두달",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "24일.화.물이샌다함.1년미만.무상.방문전연락희망",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "27금/작동시드르륵거리는소리남/구매1년이상/유상",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "27일금/스테이지에 하얀색불이 깜빡거림 운행되지않음/앱설정시물주입안됨/작년10월/유무상",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "3.3(화)세척시누수/유무상/구입1년미만",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "6.금.물걸레청소시바닥에물흥건함.25.3.14일구입.유무상",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "당일.스테이션들어가도튕겨나오다들어감.앱에서청소기가다른곳에갇혀있다고나옴.청소기빨간불들어옴.충전도안됨.물걸레청소시마른걸레로나옴.지도가바뀌고설정순서도바뀜.구입약3개월미만.유무상",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "물넘침",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "물샘",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "소음",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "스테이션 미복귀",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "오동작",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "오작동",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "작동불",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "작동안됨",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "점검요청",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "충전불",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "충전안됨",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "폐수모터오작동",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "흡입x",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "흡입안됨",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "흡입안됨-내방",
+            "count": 2,
+            "percentage": 0.19
+          },
+          {
+            "symptom": "###  25년5월 새제품 스테이션 복귀 못하는 부분으로 접수했으나 기사 방문하여   따로조치x 설명만 하고 가셨다고 하심   동일증상 이제는 아예 집을 못찾는다고 하심",
+            "count": 1,
+            "percentage": 0.09
+          }
+        ]
+      }
+    },
+    "2026-02": {
+      "정수기": {
+        "total_count": 40178,
+        "symptoms": [
+          {
+            "symptom": "냉수미지근",
+            "count": 59,
+            "percentage": 0.15
+          },
+          {
+            "symptom": "온수안나옴",
+            "count": 52,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "소음심합니다",
+            "count": 41,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "온수 안나옴",
+            "count": 40,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "온수미지근",
+            "count": 40,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "온수안됨",
+            "count": 37,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "(내용없음)",
+            "count": 36,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "얼음안나옴",
+            "count": 30,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "온수 미지근",
+            "count": 27,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "물안나옴",
+            "count": 27,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "누수",
+            "count": 25,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "소음",
+            "count": 24,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "얼음 안나옴",
+            "count": 24,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "얼음안나옵니다",
+            "count": 24,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "온수안나옵니다",
+            "count": 23,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "냉수 미지근",
+            "count": 22,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "물맛이상",
+            "count": 17,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "소음심함",
+            "count": 17,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "물안나옵니다",
+            "count": 17,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "배수호스 찢어짐/ 코크오염 / 온수안나옴/ 냉수코크쪽 물 똑똑 떨어짐 /바닥물샘 01088398690",
+            "count": 17,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "온수안됩니다",
+            "count": 16,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "냉수안나옴",
+            "count": 15,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "냉수안됨",
+            "count": 15,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "물 안나옴",
+            "count": 14,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "얼음이 안나와요",
+            "count": 14,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "온수가 안나옵니다",
+            "count": 13,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "온수출수안됨",
+            "count": 13,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "얼음이 안나옴",
+            "count": 13,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "냉수 안나옴",
+            "count": 12,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "냉수가 안나와요",
+            "count": 11,
+            "percentage": 0.03
+          }
+        ]
+      },
+      "밥솥": {
+        "total_count": 18175,
+        "symptoms": [
+          {
+            "symptom": "증기누설",
+            "count": 5,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "설익음",
+            "count": 5,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "E01 에러",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "김샘",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "냄새",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "조기배출",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "밥마름",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "취사불",
+            "count": 4,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "e01",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "e01에러",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "ECO에러",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "오작동",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "증기샘",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "패킹.전체점검",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "EO1에러",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "E-T에러",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "물떨어짐.밥마름",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "설익음.추안돔",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "설익음.추쪽김샘",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "오븐.김샘",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "전체점검",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "퍼석함",
+            "count": 3,
+            "percentage": 0.02
+          },
+          {
+            "symptom": "eco",
+            "count": 2,
+            "percentage": 0.01
+          },
+          {
+            "symptom": "eo1",
+            "count": 2,
+            "percentage": 0.01
+          },
+          {
+            "symptom": "김이 안빠짐",
+            "count": 2,
+            "percentage": 0.01
+          },
+          {
+            "symptom": "놉",
+            "count": 2,
+            "percentage": 0.01
+          },
+          {
+            "symptom": "놉파손",
+            "count": 2,
+            "percentage": 0.01
+          },
+          {
+            "symptom": "마름",
+            "count": 2,
+            "percentage": 0.01
+          },
+          {
+            "symptom": "보온무",
+            "count": 2,
+            "percentage": 0.01
+          },
+          {
+            "symptom": "보온시 냄새",
+            "count": 2,
+            "percentage": 0.01
+          }
+        ]
+      },
+      "비데": {
+        "total_count": 11849,
+        "symptoms": [
+          {
+            "symptom": "02-13/비데 오링 불량//무상/010-8638-9389 컨택/ 깃플쳇 경기북부법인지국  김영식",
+            "count": 33,
+            "percentage": 0.28
+          },
+          {
+            "symptom": "변좌흔들림",
+            "count": 21,
+            "percentage": 0.18
+          },
+          {
+            "symptom": "변좌 흔들림",
+            "count": 19,
+            "percentage": 0.16
+          },
+          {
+            "symptom": "02-04/필터쪽에서 물샘 / 버튼안눌림//무상/본관 전체. 교육관전체. 대학원전체/담당자 : 01048542984",
+            "count": 11,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "노즐안나옵니다",
+            "count": 11,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "비데 작동불량으로 A/S 접수 요청입니다",
+            "count": 11,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "누수및점검",
+            "count": 9,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "리모컨작동안됨",
+            "count": 9,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "비데 작동안됩니다",
+            "count": 9,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "작동안됨",
+            "count": 9,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "누수및 점검요청",
+            "count": 8,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2층 3층 비데 전체적으로 변좌 안따뜻함",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "비데 고정안됨",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "비데흔들거림",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "노즐 안나옴",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "노즐안나옴",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "누수",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "리모컨 작동안됩니다",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "버튼안눌림 / 전원안켜짐 / 필터쪽 물샘 010 6603 9298",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "변좌 온열안됩니다",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "비데가 흔들거린다",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "필터 교체 이후 비데 누수 발생, 본관 1층 8대 모두 점검 요청",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "노즐 나오다 멈춤",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "리모컨 작동안됨",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "1대 노즐안나옴 /2대 물안나옴/1대 커버 덜렁거림",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "노즐이 안나옴",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "노즐작동안됩니다",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "비데 물안나옵니다",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "비데 전체적으로 변좌 안뜻함 전체점검요청",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "유무상안내/수질오염으로 호스막힘/물안나옴 4대",
+            "count": 6,
+            "percentage": 0.05
+          }
+        ]
+      },
+      "음식물처리기": {
+        "total_count": 2989,
+        "symptoms": [
+          {
+            "symptom": "10.화.수리후동증.건조통교환요청시AS만받고있음.증상개선되지않음.건조통교환요청.유무상.구입1년미만",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "모터이상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "전원안들어옴",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "팬모터이상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "건조안됨",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "건조통 이상 알림",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||직접입력(10자이내)||뚜껑 불량 & UV 램프 불량||1년 이상||tjdals940610@naver.com",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDENL201DCGW||동작 관련||건조통 밑에 톱니모양 부품이 없어짐||1년 미만||geo0202@kakao.com",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "02.02.월.교반봉프로펠러부위가돌아가지않음.섞이지않고분쇄도안됨.구매일자불확실.1년되어간다라고함.빠른방문요청.유무상기준안내함.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "02.24,화.작동안됨.AS접수멘트나옴.오후빠른방문요청.250724구매.유무상.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.03.화.음식물처리기뚜껑파손되어닫히지않는다고함.오후빠른방문요청.1년이상.유상.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "10.화.사용중멈춤.이물질경고뜨면서멈춤.건조통누수.구입1년미만.유무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "13/금/오전요청/내부플라스틱이 금이감 /내부문제 이상있다는 음성이나옴 /사용하는동안 물받이통에 물이 한번도 맺힌적이없다고함/25.7.23 구매 .유무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.11.수/프로팰러안돌아감/1년미만/무상/컨01087825045/4시이후방문요청/시간조율안내",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.20/음식물 처리기 뚜껑 파손. 구매제품. 1년 이상/유상 안내.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.24화/음식물건조가안된다고하심/1182501240007/",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.25(수)/꼼꼼한점검요청/작동이후뚜껑열면통안에물이가득,제품불량주장/구매1년미만/유무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.25수/작동시위잉하는커다란소음발생/1년미만/유무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.27.금.모든기능깜박이면서작동무.구입6개월.유무상.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.3 분쇄안됨/1182510260003  01041522035",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2.4(수)삑~소음/유무상/구입1년미만.건조통결합잘안됨.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2/9월/온도감지센서이상음성나오며작동무/코드여러번재인가해야작동됨/하자교환언급/유무상/구입3주이내",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "24.화/전원무.구입1년이상.유상.빠른시간조율요청",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "25(수)12시이후방문요청/모터이상음성송출/전원재인가동증/유무상/구매1년이하",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2월11일/미생물이 다 죽었는지 작동이 안된다고 하심/무상/1182509050021",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "2월23일/ 음식물처리기 작동안됨/ 무상/1182407240002",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "3.4.수.건조통바닥에눌음.빨간불들어오면서작동무.홈페이지제품등록무상보증기간2026-03-31확인.유무상.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "3/03화>분쇄안됨.25.08월구입.유/무",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "6금.음식물굳어들러붙음.헛돌아가며쿵쿵소 리.건조통코팅벗겨짐.25년8월구입.유무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "6일/설치시 사용법 안내 못받았다하심/정상작동여부 확인요청 /무상/고번1182409030009/컨-01022344755 추-01020055297 /오후 4시 이후 방문요청",
+            "count": 2,
+            "percentage": 0.07
+          }
+        ]
+      },
+      "인덕션레인지": {
+        "total_count": 2351,
+        "symptoms": [
+          {
+            "symptom": "20금.CIR-EP301FAW쿠팡로켓배송무상설치 요청.2월18일수령",
+            "count": 5,
+            "percentage": 0.21
+          },
+          {
+            "symptom": "<안전건 본사접수> 파워코드 소손으로 안동스토어 출장 시 설치불량으로 확인되어 설치법인 이관 연장코드 소손으로 재설치 필요건 담당 : 장효진사원, 손명기점장",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.20.금/하단누전확인됨 작동불/유무상/컨.01050905770/3052506020196",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "3.화)빠른방문/쿠팡로켓배송무상설치/수령3일",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "설치/2월12일/빌트인",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "설치/2월26일/빌트인",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "123",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "u에러",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "(온라인)|전기레인지|설치시  왼쪽  싱크대  사이뜸|설치사이드 틀이 너무높아 불편합니다|1개월 미만|",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.05.목.전원안들어옴.1월29일설치후오늘처음사용한다고함.콘센트이상무.오전가장빠른방문요청.유무상.3052601070130",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.06.금/쿠팡로켓배송무상설치요청/제품수령26.02.05.목/오전방문또는오후05시이후방문요청",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.11.수.전원인가후2~3분후삑삑소음후꺼짐.1년이상.유상.3052302280006",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.12.목/작동불량/프리존사용하려고하면,마음대로작동하다가,소리내면서꺼짐/기사방문,점검안내/면밀점검요청/구입11개월/유무상/방문전연락요청/오후방문희망/3052502240397",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.14.토.쿠팡로캣배송무상설치요청.제품2얼14일수령예정.수령후재연락거부.와이드케이스설치시무상으로되나그외에는 환경에따라 추가비용발생할수있음수긍.제품도착안되면취소될수있음수긍.",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.20.금/일시불구매/이전설치문의/빌트인설치관련문의/설치가능여부선통화요청",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.24.화/쿠팡로켓배송무상설치요청/오늘수령/방문전꼭연락요청",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02.26.목.전기레인지설치.쿠팡설치품쿠폰.수령2일.현장환경에따른추가비용안내.오후16시이후방문요청.",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "0220/쿠팡로켓배송무상설치/제품수령일19일/기존인덕션사용별도타공필요없음 기존쿠쿠인덕션전기접지신규제품전기콘세트로연결만필요/빠른방문및연락요청",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "02-28토/전기레인지이전설치요청/비용수긍/구매제품",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "03.03화/오른쪽버튼안눌림/전원재인가확인불가/1년이상/유상",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "10일/화/부품교체하였으나작동후시간지나면열전달안되고있는동일증상/유무상/3052508220051/교환희망/오후방문희망",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "11.수/인덕션과 프레임사이/프레임과 씽크대 사이 틈/실리콘마감/무상/3052601280076",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "11/수/2시이후/쿠팡배송무상설치요청/1월23일수령",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "11수.쿠팡로켓배송무상설치요청.",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "12목/빠른연락방문/쿠팡로켓배송무상설치요청",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "12목/쿠쿠인덕션설치되어잇음/LG식세기를사용할려고쿠쿠익덕션위로조금올려달라고요청/선통화요청후방문요청/유상/3051811190059/오전중방문요청",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "13.금.쿠팡로켓배송무상설치요청.2.12일수령",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "13/금/쿠팡배송무상설치요청/2월11일수령",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "19(목)신규설치/수평이안맞음으로음식이안익는다함/유무상/3-05-260211-0484",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "19.목.CIHR-F302HFB.누전.차단기내려옴.2.5암페어전설설치안된것같음.전선연결잘안된것같음.구입1년이상.유상.일시불.30524102 10098",
+            "count": 2,
+            "percentage": 0.09
+          }
+        ]
+      },
+      "식기세척기": {
+        "total_count": 2322,
+        "symptoms": [
+          {
+            "symptom": "이전설치",
+            "count": 9,
+            "percentage": 0.39
+          },
+          {
+            "symptom": "2.20금//설치요청/쿠팡로켓배송.일시불",
+            "count": 4,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "회수/3월17일/천오준석010-8401-5256/부산 사하구 낙동대로 375 전자랜드 사하점/설치/3월18일/설치품 쿠폰",
+            "count": 4,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "E4에러",
+            "count": 4,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "12(목)/설치시부터코팅벗겨졌다고함.상단바스켓모서리녹씀/바스켓교체원급/방문전교체여부통화요청/3-14-250731-0038/유무상",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.20금.설치요청.6인용.유상안내.방문전화요청",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.21토/식기세척기설치품설치/비용유상안내",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.23.월.동작시물공급안됨.구매1개월이내.유무상.",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.24.화/식기세척기2대설치/비용안내/추가요금안내",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.3화/세척중간에DR코드나오며문이열린다고함/세척완료후에는문이안열림/1년이내/유무상",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.6/식기세척기설치안내/무상/쿠팡로켓배송",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2/10(화)/쿠팡로켓배송무상설치요청",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "27.금.식기세척기설치요청.비용수긍.유상",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2월11일/쿠팡로켓배송무상설치요청/제품수량1개",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "6인용식세기설치요청/모델명확인안됨/기사와통화시모델명말씀해주시길안내/비용안내/설치환경에따라추가비용발생될수있음안내",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "E4에러.본체바닥누수.벨브잠금불.중고거래.1년이상유상",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "누수",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "배수 연결",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "설치/2월11일",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "설치/2월28일/제품은 고객댁에 있습니다 설치 부탁드리겠습니다",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "아사로인한 이전설치요청",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "이사로 이전설치",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "이전설치 유상",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "이전설치 이후 간헐적 누수발생. 유무상 현장결정",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "자동급수기능 신청합니다.",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "점등 안됨",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "제품바닥누수/전원분리안내/벨브확인불/1월16일AS받고나서문제가일어낫다고주장/유상안내/3142009160019",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "E4",
+            "count": 3,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "2.03.화/이전설치/컨: 01040301646/비용수긍",
+            "count": 2,
+            "percentage": 0.09
+          },
+          {
+            "symptom": "E4 접수요청드립니다",
+            "count": 2,
+            "percentage": 0.09
+          }
+        ]
+      },
+      "무선청소기": {
+        "total_count": 1010,
+        "symptoms": [
+          {
+            "symptom": "1.20.화.청소기.모델명확인불/1년미만  쿠팡구매/완충은되나작동중45초만에꺼져버림/유무상안내",
+            "count": 2,
+            "percentage": 0.2
+          },
+          {
+            "symptom": "작동중 꺼짐",
+            "count": 2,
+            "percentage": 0.2
+          },
+          {
+            "symptom": "전원무",
+            "count": 2,
+            "percentage": 0.2
+          },
+          {
+            "symptom": "충전 안됨",
+            "count": 2,
+            "percentage": 0.2
+          },
+          {
+            "symptom": "충전불",
+            "count": 2,
+            "percentage": 0.2
+          },
+          {
+            "symptom": "## E01",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "####작동중  꺼짐###",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "####충전이 안됨####",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "&lt;본사지시/긴급&gt;  진열정비 - 청소기 메인브러시 앞쪽 파손  (점검 및 교체)  전자랜드 담당자 신연미 01020652509  *진열정비 요청의 건  본사지시로 긴급처리 바랍니다.(담당장효진)",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "&lt;본사지시/긴급&gt;  진열정비 - 충전안됨  (점검 및 교체)  홈플러스 담당자 유장현 01050600988  *진열정비 요청의 건  본사지시로 긴급처리 바랍니다.(담당장효진)",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FB||구조/외관(추가)||(내용없음)||1년 미만||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FB||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FB||직접입력(10자이내)||동작무||1년 이상||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CVCG08FF30NW||전원부 관련||(내용없음)||1년 미만||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||소음관련||(내용없음)||1년 미만||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410NW||직접입력(10자이내)||AS||1개월 미만||whiteogre@nate.com",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410NW||직접입력(10자이내)||메인브러쉬 호스 찢어짐||1년 미만||pmj7021@naver.com",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410NW||직접입력(10자이내)||청소기가 먼지를 못 빨아들이고 있어요||1년 이상||yeo-jin0218@naver.com",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410NW||직접입력(10자이내)||흡입이 안되고 가득찼다고 뜸||1년 이상||blackjar@naver.com",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410UG||직접입력(10자이내)||청소기가빨아들인먼지를 토해내요||1년 미만||dmlwjd007@naver.com",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410UG||직접입력(10자이내)||흡입구 자바라 균열||1년 이상||amourlim@hanmail.net",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1420NW||직접입력(10자이내)||먼지가 안빨림||1개월 미만||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1420NW||직접입력(10자이내)||청소기 흡입 자바라 파손||1년 이상||bdh0201@hanmail.net",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1420UG||직접입력(10자이내)||먼지를 빨아들이지 못합니다||1년 이상||kid1208@hanmail.net",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAEM1410NW||직접입력(10자이내)||전원버튼쪽에빨간불||1년 미만||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAEM1410NW||직접입력(10자이내)||충전이 되다 안되다합니다||1년 미만||wjdtkddhr12@hanmail.net",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAFFEM1430NW||직접입력(10자이내)||먼지통장착이 안됨||1년 미만||",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAFFEM1430NW||직접입력(10자이내)||배터리 방전이 너무 빠릅니다. ||1년 미만||minrhee1989@naver.com",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAFFEM1430NW||직접입력(10자이내)||배터리가 비 정상적으로 빠르게 닳아요||1년 미만||tiger15089124@gmail.com",
+            "count": 1,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAFFEM1430NW||직접입력(10자이내)||배터충전 않됨||1개월 미만||oasis3229@daum.net",
+            "count": 1,
+            "percentage": 0.1
+          }
+        ]
+      },
+      "공기청정기": {
+        "total_count": 886,
+        "symptoms": [
+          {
+            "symptom": "소리가 심함",
+            "count": 3,
+            "percentage": 0.34
+          },
+          {
+            "symptom": "03.06/건물화재로 분진,연기에 노출.as요청/유상/청정기 2대/1042509220178",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "2/20금>작동시작후 바로 청정도표시 빨강켜짐.구입1주일.유/무",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "AC-12R20FNW(S) 제품 소음으로 불량 교환 진행 고객입니다   서대구지점에서  a/s 갈수있도록 요청드립니다 /무상/  1042602200249",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "AC-28AH10FNW(S)/작동 잘 안됨. A/S 접수요청 // 서비스 접수시 꼭!! 블루몬케어(중부산) 법인지점으로 이관 접수 부탁드립니다./무상/1042502190256",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "공청기에서 에러메세지가 뜬다고 함  1042311130114  /무상/",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "메뉴버튼 전원버튼이 안먹힘//현대제철 들어가기 힘드실꺼 같아서 공기청정기 당진지국 사무실에 옴겨놓았습니다/충남 당진시 무수동로113 201호 컨택번호 010-7726-1293/1042306150069/무상/",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "소음발생",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "임의접수내용/2.9.월/작동안됨/오후3시방문희망/무상",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "작동안됨 1042503260233 /무상/",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "작동이 잘 안됨",
+            "count": 2,
+            "percentage": 0.23
+          },
+          {
+            "symptom": "2.03/화/청정도여부점등불/오전방문요청/유무상/1042104140142",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "공청기 소음이 난다고 합니다/ 1-04-231017-0022",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "소음이아주심함  1042110210019",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "영업장 내 공청기인데 전원이 자꾸 꺼짐. 코드 빠꿔 연결해도 마찬가지요. 빠른 as요청/무상/1042403160016",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "자꾸 꺼짐 현상이 있음",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "전원이 지속적으로  그냥 꺼짐/1042202140195",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "청정기 소음이 심함/  1-04-210407-0271",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "청정기에서 소리가 난다고 합니다/어린이집 입니다,아무때나 괜찮아요/1042310240152",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "필터덮게불량 음성 010-8408-4696 하얏트 하역장내 1층 구매부",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인) 작동시 소음발생-출장",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC09XHCL10FW(I)||소음 관련||이상한 소리가 나요||1년 이상||cho717833@daum.net",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC12YCL10FW(I)||에러/표시창 관련||E6  전원켜고 작동시키면 30초후 ||1년 이상||s01094788070@gmail.com",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC17T10FWH(S)||소음 관련||(내용없음)||1년 이상||shinhye1127@naver.com",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC20T10FWH(S)||소음 관련||작동시 소리가 나요||1년 이상||mammy223@nate.com",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC28W10FWS(S)||소음 관련||팬 돌때 소음||1년 이상||kdexp9143@naver.com",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC35U10FWS(S)||직접입력(10자이내)||코드선이 찢겨져서 화재우려가 있습니다||1년 미만||jindalle207@naver.com",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||ACN12XP20FW(S)||직접입력(10자이내)||악취가 발생합니다||1년 이상||terran1725@nate.com",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FD||직접입력(10자이내)||점등이 되지않음||1년 이상||",
+            "count": 1,
+            "percentage": 0.11
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 1,
+            "percentage": 0.11
+          }
+        ]
+      },
+      "기타": {
+        "total_count": 843,
+        "symptoms": [
+          {
+            "symptom": "AC-09AA10FWH 어제설치받음/ 벽걸이에서 떨어짐 /강성클래임 빠른방문요청",
+            "count": 3,
+            "percentage": 0.36
+          },
+          {
+            "symptom": "02.26목/투도어맨장고모델면확인불/소음심함/구매2개월/유무상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "02.28.토/쿠팡로켓배송무상설치요청/지난주수령/방문전꼭연락요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "03.화.6인용식기세척기.모델명확인불.작동하려고하면꺼짐.불안들어옴.구입1년이상.유상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "12.목/모델명확인불,비데/전원은들어오나물안나옴/일시불,3년이상/유상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "12.목/모델명확인불,비데/전원은들어오나물안나옴/일시불,3년이상/유상/오전방문희망",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "13(금) 전기레인지3구중 1구 가열불/모델명확인불/스탠드케이스설치/유상/구입10년",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "19.목.인덕션3구.이전설치문의.빌트인설치관련문의.통화요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.11수.인덕션이전설치.비용관련상딤팔요함.유상안내.방문전에꼭전화달라고요청하심.방문전화요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.19/유상안내/2.10일경/가능하면 2.12당일방문요청,가능여부연락요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.19목.식기세척기6인용.모델명확인불.간헐적누수.구입2년이상.유상안내.방문전화요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.20.금/설치품설치/당월구매/설치품쿠폰.쿠팡.무상/컨01027052758",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.20일 신규설치/쿠팡구매/무상+@ / 오전방문요청/상수도/컨: 01086192214 /CIR-E349FM",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.23/쿠팡로켓배송무상설치요청/2.20수령일",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.26/모델하우스 인덕션레인지 목업 설치를 위한 설치품 쿠폰 접수/고객지원과 김희진 요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.26/쿠팡로켓배송설치대상/무상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.27/쿠팡로켓배송무상설치요청/제품수령26일",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.4(수)/쿠팡로켓배송설치/제품수령일2.2일",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.5/AS/1년이내구매상품/에러코드/dr/컨택:01053476697",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.6금.식기세척기모델명확인불.구입2개월.헹굼1회추가후1시간지나면자동으로문열림.유무상.방문전화요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.9월.CIHR-HLT313HFS.설치요청,유상안내.방문전화요청필수",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "20.금/E1에러나옴/ 식기세척기모델명확인불 6인용/ 유무상안내 모르는번호잘안받으심문자발송요청하심",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "27금/오후방문요청/제품설치요청/구입1년이상되었는데설치하지않은새제품/유상안내/빌트인",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2월20일 방문요청 / 안마의자 가죽해짐 패드 교체요청 / 비용안내 / 연: 01020413420",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2월21일 설치요청 / 인덕션 쿠팡 무상설치 / 연: 01027966629",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.3.화.제습기모델명확인불.E-9에러코드확인.1년이상.유상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.3.화.쿠팡로켓배송무상설치요청.제품도착완.무상+@안내",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "6.금.비데온수안됨.모델명확인불.구매1년이상.유상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "9.월.비데자가설치제품.브라켓결합안됨.제품결함.점검요청.구매일주일이내.유무상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "9.월.비데자가설치제품.브라켓결합안됨.제품결함.점검요청.모델명확인불.구매일주일이내.유무상",
+            "count": 2,
+            "percentage": 0.24
+          }
+        ]
+      },
+      "로봇청소기": {
+        "total_count": 733,
+        "symptoms": [
+          {
+            "symptom": "13금.걸레충전후작동시스테이션에서안나옴/2달구매.유무상.",
+            "count": 2,
+            "percentage": 0.27
+          },
+          {
+            "symptom": "2.25.수/스테이션복귀전에거실바닥에물버림/물흥건함/교환요청/구매두달/무상/",
+            "count": 2,
+            "percentage": 0.27
+          },
+          {
+            "symptom": "###  25년5월 새제품 스테이션 복귀 못하는 부분으로 접수했으나 기사 방문하여   따로조치x 설명만 하고 가셨다고 하심   동일증상 이제는 아예 집을 못찾는다고 하심",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "####스테이션복귀안됨",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "###다시안됨",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "###작동안됨",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "##청소안됨",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||기타||전체 제품||CRVCBAC0510NW||직접입력(10자이내)||스테이션 복귀 했다가 나왔다가 반복||1년 미만||gmltn7219@nate.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||기타||전체 제품||CRVCBAC0510NW||직접입력(10자이내)||청소기 스테이션으로 복귀안됨..덜덜 ||1년 미만||jhj9818@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM10IG||직접입력(10자이내)||연결안됐다고 나옴||1년 미만||kjh690922@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM10IG||직접입력(10자이내)||전원불량||1년 미만||pmj7021@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20IGM||직접입력(10자이내)||물청소안됨||1년 이상||voicementor@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20IGM||직접입력(10자이내)||배터리 수명||1년 이상||dimgofud@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20IGM||직접입력(10자이내)||스테이션 전원이 안들어오는거같아요!||1년 이상||ksy228852@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20IGM||직접입력(10자이내)||스테이션에 전원이 안들어와요||1년 이상||ksy228852@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20IGM||직접입력(10자이내)||조금만 돌다가 정지함||1년 이상||2580jwjs@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20IGM||직접입력(10자이내)||청소후 먼지를 비우지 않음 ||1년 이상||whathani@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20INWM||직접입력(10자이내)||메인브러쉬 덮개 노후되어 부서짐||1년 이상||",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20INWM||직접입력(10자이내)||브러시 깨짐||1년 이상||",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20INWM||직접입력(10자이내)||자동비움이 안됩니다||1년 이상||super0262@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM20INWM||직접입력(10자이내)||전원무.작동안됨.충전시 충전도 안됨||1년 이상||",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||LDS범퍼 센서 오류||1년 미만||kbjlove3407@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||LDS센서 오류||1년 미만||",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||공레패드 고장||1년 미만||4821lee@hanmail.net",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||로봇청소기 앱설치 재설치요망||1개월 미만||",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||로봇청소기 폐수 수거가 되지않음||1년 이상||kst0865@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||맵핑 다시 설정 해도 청소기가 청소를||1개월 미만||thdus2951@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||물걸레안됨 흡입고장||1년 미만||tkboy7879@naver.com",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||물이 흥건해요||1년 미만||",
+            "count": 1,
+            "percentage": 0.14
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||사이드 블러쉬 작동 코드발생||1년 미만||",
+            "count": 1,
+            "percentage": 0.14
+          }
+        ]
+      }
+    },
+    "2026-03": {
+      "정수기": {
+        "total_count": 10956,
+        "symptoms": [
+          {
+            "symptom": "냉수미지근",
+            "count": 14,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "(내용없음)",
+            "count": 14,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "온수미지근",
+            "count": 13,
+            "percentage": 0.12
+          },
+          {
+            "symptom": "누수",
+            "count": 9,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "얼음안나옴",
+            "count": 9,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "냉수안됨",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "물안나옴",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "얼음안나옵니다",
+            "count": 7,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "온수안나옴",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "물 안나옴",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "얼음이 안나와요",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "온수가 안나온다고 합니다",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "온수가 안나옴",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "온수안나옵니다",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "온수안됨",
+            "count": 6,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "냉수안나옴",
+            "count": 5,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "얼음 안나옴",
+            "count": 5,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "정수에만 불이 들어옴",
+            "count": 5,
+            "percentage": 0.05
+          },
+          {
+            "symptom": "온수 출수 안됨",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "01034379140  사전출입신청 센서작동무",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "3.6금/얼음안나옴(제빙기능ON/절전모드OFF/1차설명했음)/유무상/오후1시이후방문희망/1-01-240313-1169",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "4일/누수/정수기 바닥 부위에 물고인다하심 /무상/고번1012602241914/컨-01076693334",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "냉수안나옵니다",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "물받이로 물역류됨/얼음안나옴/누수센서가 계속작동됨/010-5530-3630 컨",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "물안나옵니다",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "사용중인 정수기 작동이 안된다고 합니다",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "센서이상 점검바람 7726부대 01034379149",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "소음",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "소음심합니다",
+            "count": 4,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "온수 안됨",
+            "count": 4,
+            "percentage": 0.04
+          }
+        ]
+      },
+      "밥솥": {
+        "total_count": 6881,
+        "symptoms": [
+          {
+            "symptom": "김샘",
+            "count": 4,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "조기배출",
+            "count": 4,
+            "percentage": 0.06
+          },
+          {
+            "symptom": "ECO에러",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "냄새",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "증기누설",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "증기샘",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "3.10화/구입한지얼아안되었으나플라스틱냄새심함/방문전연락요청/구매시기1개월이내/유무상/컨01023932754",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "밥마름",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "빽커버걸림",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "오븐.패킹.전체점검",
+            "count": 3,
+            "percentage": 0.04
+          },
+          {
+            "symptom": "eo1에러",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "마름",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "배출무",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "보온시 밥마름/물흐름",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "증기 누설",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "찰기무",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "03.12목/밥솥뚜껑결합안됨/옆증기누설있음/힌지부분파손없음/열림으로되어있는지핸들확인함/내솥변형없음/1년미만/유무상안내",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "10.화)옆증기누설/유상/구매1년이상",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "3.5.목.증기배출음성안나옴.구독.무상.1202602230015",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "3/10화/맞춤밥맛부드러운밥으로설정안됨/유무상/구입25.12.17",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "e01",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "Edo에러",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "ih:f, 증기누설",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "IH:F에러",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "김샘/퍼석함",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "내솥없이 쌀투입",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "밥물넘침.증기배출불",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "보온안됨",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "설익음",
+            "count": 2,
+            "percentage": 0.03
+          },
+          {
+            "symptom": "설익음.추쪽김샘",
+            "count": 2,
+            "percentage": 0.03
+          }
+        ]
+      },
+      "비데": {
+        "total_count": 2986,
+        "symptoms": [
+          {
+            "symptom": "정기점검 이 후 누수 발생 본관 2층 6대 모두 점검 요청/깃플쳇 sa57003 황진구",
+            "count": 4,
+            "percentage": 0.13
+          },
+          {
+            "symptom": "03.07토/설치품설치/33.000안내/일시불/추가비용발생될수있음안내",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "05.목.리모컨작동안됨.건전지교체해도동증.1022506040054",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "3.6.금.전원은들어오나버튼조작안됨/1022402010401/임의고번접수/유무상안내",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "3.6금/수압약함,노즐작동이상/1년이상/유상/가장빠른시간방문희망",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "3.9.월.뚜껑댐퍼고장.빨리닫힘.무상.1022506050005",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "3.9.월/노즐청소시비데에서전기가와큰일날뻔했다고함/전원코드각각빼놨다고함/2건다AS접수/무상/1022503070382",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "노즐 안나옴",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "노즐 잘 안나옵니다",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "노즐안나옴",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "리모컨고장",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "물이 안나온다",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "변좌흔들림",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "변좌흔들림/박영호(SA58001)/1-02-240705-0341",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "비데 커버불량",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "비데/세정작동 안됨/1년 이상/유상",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "필터쪽 물방울 떨어짐",
+            "count": 3,
+            "percentage": 0.1
+          },
+          {
+            "symptom": "노즐에서 물이 안 나온다고 하심(남자화장실)/1022508120382",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "리모컨 작동안됨",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "비데 작동안됨 빠른요청/1022307110186",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "01024638157 남자화장실 필터파손으로 누수중 빠른방문요청/무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.04.수/버블분사잘안됨/세정시자동멈춤안됨/1022506090316/오후방문요청/유무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.04.수/버블통안에이물질/1022512300221/오후방문요청/유무상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.04.수/온수온도불량/무상/1022602050244",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.05.목.변좌따뜻해지지않음.1년이상.유상.",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.05/목/컨:01033179004/필터쪽 누수발생 동일증상여러번언급/필터쪽 너무약함언급 빠른AS 방문요청/1022302140249",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.06.금/비데설치요청/이마트구매/오전방문요청/유상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.06금/설치품철거/25,000안내/일시불/추가비용발생될수있음안내",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03.11/수/노즐작동안됨/유상",
+            "count": 2,
+            "percentage": 0.07
+          },
+          {
+            "symptom": "03/04 브라켓과 판 조임볼트 모두 필요하다고 하심/비용안내/컨 01033794079 오후 연락하고 오길요청",
+            "count": 2,
+            "percentage": 0.07
+          }
+        ]
+      },
+      "음식물처리기": {
+        "total_count": 1194,
+        "symptoms": [
+          {
+            "symptom": "3.04일 음식물이  쌓여있다고 함 /돌아가지 않는것 같다고함/  01023583388 /1-18-250626-0009",
+            "count": 3,
+            "percentage": 0.25
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDEFF201DCNW||동작 관련||음식물 처리가 안되요||1년 미만||tanpopokim1@naver.com",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "03.04수/빨간불점등후as필요하다는안내음성지속발생/구매1년이내/유무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "03.06.금.건조통이상알람빨간불나옴.자동세척후증상.열흘이상사용하지않고말렸으나동일.오전방문요청.구매1년이내.유무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "3.5(목)/안쪽내솥바닥부분코팅벗겨짐/수령하루/유무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "3/4(수) 마이크로오가닉미생물제제모두사용하여없음/유무상안내/방문점전미연락요청/1182506170003",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "4.수/작동안됨/한달/무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "당일방문요청/음식물건조통에러/전원재인가동일/구매1년미만/유무상",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "음식물 투입후 하룻밤 지나도 음식물 그대로 있다고 합니다",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "음식물처리기/건조통구매요청/유상안내",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "음처기 바닥쪽에  누수발생 as요청합니다 3월 9일 방문요청함 1182602250019",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "작동안됨/방문일정 조율 1182410230022",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "uv램프 교체",
+            "count": 2,
+            "percentage": 0.17
+          },
+          {
+            "symptom": "&lt;본사지시/긴급&gt;  진열정비 - 오가닉칩 요청  (점검 및 교체)  이마트 담당자 김선자 010-5483-3229  *진열정비 요청의 건  본사지시로 긴급처리 바랍니다.(담당장효진)",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "3.5(목)/음식물이 분쇄되지않고 바닥이 까맣게 타고 탄냄새가 남/복지몰/주문일26년2.3/유무상",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "건조통 에러음 송출",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "유상일경우온라인출장비\\22,000적용필요/(챗봇)/렌탈///1년 미만//처리기 미작동 분쇄기 고장 의심",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "음식물처리기 작동 이상으로 AS요청 컨텍시 010-3351-3806/1182412090006",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "######  누 수",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "######### 건조통 안움직임",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "####누수",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "###팬모터 에러",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "##음식물처리기 칼날이 안돔",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "&lt;본사인입 음식물처리기 교환요청&gt;  간헐적 건조불량  고객 컨택 전 본사 확인 요청드립니다.  담당 : 장효진사원",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "(온라인) 교반모터 이상-출장",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "(온라인)||기타||전체 제품||CFDC151MODG||직접입력(10자이내)||소리와 냄새||1년 미만||mygml1235@hanmail.net",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "(온라인)||기타||전체 제품||CFDC151MODG||직접입력(10자이내)||필터 교체 과정에서 문제||1년 미만||violet1701@naver.com",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FB||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FD||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 1,
+            "percentage": 0.08
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||소음관련||||1년 미만||",
+            "count": 1,
+            "percentage": 0.08
+          }
+        ]
+      },
+      "인덕션레인지": {
+        "total_count": 838,
+        "symptoms": [
+          {
+            "symptom": "03.05목/쿠팡로켓배송무상설치요청/제품수령03.02월",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "04.수.쿠팡무상설치.수령일3월1일",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "18.수.이전설치.유상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "2.21토/설치품설치/비용수긍/설치전설치환경관련통화필요공간안된다면케이스필요안내.수긍/케이스유상안내",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3,05 이전설치/01048769555 컨/비용수긍/빌트인",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.10(화)/3구전기레인지/설치/비용수긍/5만+@/작업환경에따라비용추가/컨01075877434",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.14토/인덕션설치요청/비용수긍/일시불제품/SSG닷컴구매",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.4.수/쿠팡로켓배송/3.2수령/비용+@수긍/상판타공관련문의",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.5.목/전용용기사용해도u에러/3-05-260202-0363/1년미만/무상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.6금/쿠팡로켓배송무상설치/제품수령3.3",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.6금/쿠팡로켓배송무상설치요청/3.3제품수령/15cm케이스요청하심.코드거리가멀어서 연장가능요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.7토/쿠팡로켓배송무상설치요청/부재시컨01076200835/제품수령3월2일",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.9(월)/기존없던소음이인덕션키면크게붕하는소리남,간헐적으로자주발생/건설사특판/입주일25,10월/하자증권발급전/유무상",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3.9월오전중요청/쿠팡수령2.8일/설치환경에따라추가비용발생될수있음안내",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3월/27금/오후4시이후희망/일정조율/쿠팡로켓배송구입설치/빌트인/2월28일수령/컨01095686859/부재시01046085661",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3월12일/신규설치/비용안내/컨:01027311798",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "3월3일.화.쿠팡구매제품으로신규설치희망.15cm프리스탠딩케이스로설치희망.유상.방문전연락희망및부재시컨택번호01085490822",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "4.수/쿠팡에서구입함/무상설치",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "4수.쿠팡로켓배송무상설치요청.",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "5.목/새재품설치했는데전원을꺼도소음발생.구입 일주일미만.유무상.오전시간조율요청",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "a/s요청. / 인덕션 사용시 전원이 나감. 빠른 정검 요청/유상/3052412020328",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "발열이 한쪽이 안된다고하십니다 as부탁드립니다",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "설치/3월12일/빌트인, 필요시 스탠드 8.7CM 또는 와이드케이스(현장결제)",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "설치/3월27일/빌트인, 제품 매장에서 택배",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "설치/3월9일/빌트인, 오후 5시 이후 설치요망, 제품 매장에서 택배",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "용기인식불",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "전기렌지 설치요청/중고구매하심/유상안내",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "전원버튼 고장 갑자기 뻥 소리가남",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "죄측 화구가 불이 약해서 사용할수가 없습니다. as접수요청합니다",
+            "count": 2,
+            "percentage": 0.24
+          },
+          {
+            "symptom": "EF코드가 뜬다고 합니다. 비용수긍",
+            "count": 1,
+            "percentage": 0.12
+          }
+        ]
+      },
+      "식기세척기": {
+        "total_count": 779,
+        "symptoms": [
+          {
+            "symptom": "설치/3월5일",
+            "count": 4,
+            "percentage": 0.51
+          },
+          {
+            "symptom": "16.월/이전설치비용수긍",
+            "count": 4,
+            "percentage": 0.51
+          },
+          {
+            "symptom": "3.4/식기세척기6인용설치/쿠팡/무상",
+            "count": 3,
+            "percentage": 0.39
+          },
+          {
+            "symptom": "3.4일쿠팡로켓배송으로식기세척기구매무상설치요청.유무상안내.방문전화요청",
+            "count": 3,
+            "percentage": 0.39
+          },
+          {
+            "symptom": "설치/3월6일",
+            "count": 3,
+            "percentage": 0.39
+          },
+          {
+            "symptom": "설치품설치/유상/비용/컨01076182962",
+            "count": 3,
+            "percentage": 0.39
+          },
+          {
+            "symptom": "(내용없음)",
+            "count": 3,
+            "percentage": 0.39
+          },
+          {
+            "symptom": "E1. AS접수",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "01.10.토.식기세척기설치.쿠팡설치품쿠폰.수령1일.현장환경에따른추가비용안내.오전빠른설치요청.",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.03화/e4에러.실누수확인안됨.배수호수싱크대로확인됨/구매1년이내/유무상/",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.04수/설치품설치/비용수긍/자가이동/컨01066551405/오후방문희망",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.05.목/설치요청/일시불/쿠팡/구입1년이상/비용수긍+@",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.05목/전원확인은되나작동불/구매1년이내/유무상/3142511170109",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.06.금/내부세척후,건조과정표시되어있으나,물많이고여있음/환불희망언급/기사방문,점검안내/오늘설치/무상/방문전연락요청/3142603040053",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.06.금/설치요청/쿠팡구매/오후방문요청/무상",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.06금/기능조작부점등안됨/유무상/구매2~3년가량/오후3시방문희망",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.06금/기능조작부점등안됨/유상/구매2~3년가량/오후3시방문희망",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.06금/쿠팡로켓배송무상설치요청/이미제품수령함/컨부재시.박혜옥01099474418",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03.09월/설치품설치/비용수긍/컨01044853650",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03-04 오후5시이후방문요청/쿠팡로켓배송무상설치요청/제품수령 03-03",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "03-06 설치/쿠팡로켓배송무상설치요청/제품수령 02-28",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "0307/쿠팡로켓배송무상설치요청/24일수령/01025316384",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "04.수.세제뚜껑파손.구입1년이상.유상.일시불.3142007300032",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "04일/ 식기세척기 설치 요청/설치비 58000원/유상/01077286536",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "10(화) 설치품설치/유상/58000+@/상수도지역/렌탈정수기와 동시접수",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "2.25수요일쿠팡로켓배송무상설치받음/도어쪽에서물뚝뚝떨어짐/급수벨브잠금안내했으나잠금불/유무상안내",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "2.27.설치폼설치요청/비용안내/안내책자에모델명2개기재됨CDW-BD0610T",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "2.27금/설치요청/일시불/쿠쿠스토어수지점/25.11.6구매/유상/46000원",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "23/화.led표시창노란빛이나dr버튼만파란색으로설정됨/유상/3-14-240909-0160",
+            "count": 2,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "3,04 쿠팡로켓배송무상설치요청/01075173575 컨",
+            "count": 2,
+            "percentage": 0.26
+          }
+        ]
+      },
+      "무선청소기": {
+        "total_count": 380,
+        "symptoms": [
+          {
+            "symptom": "충전안됨",
+            "count": 2,
+            "percentage": 0.53
+          },
+          {
+            "symptom": "먼지통 파손",
+            "count": 2,
+            "percentage": 0.53
+          },
+          {
+            "symptom": "오동작",
+            "count": 2,
+            "percentage": 0.53
+          },
+          {
+            "symptom": "작동중꺼짐",
+            "count": 2,
+            "percentage": 0.53
+          },
+          {
+            "symptom": "전원무",
+            "count": 2,
+            "percentage": 0.53
+          },
+          {
+            "symptom": "&amp;lt;본사지시/진열정비&amp;gt;소음 발생",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "&lt;본사지시/진열정비&gt;소음 발생",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FD||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||전원부 관련||||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410NW||직접입력(10자이내)||결합 부분 파손||1년 이상||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAE1410NW||직접입력(10자이내)||사용시간이 짧음||1년 이상||xodid0605@naver.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAFFEM1430NW||직접입력(10자이내)||작동이 전혀 안됨||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAFFEM1430NW||직접입력(10자이내)||충전안되고 스테이션 작동안됨 ||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAFFEM1430NW||직접입력(10자이내)||충전이 안됨||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAME1410UG||직접입력(10자이내)||베터리교체해도 충전이 않되요||1년 이상||ssunhee87@naver.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAME1410UG||직접입력(10자이내)||흡입이 안돼요||1년 이상||cooing6687@naver.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCAME1420UG||직접입력(10자이내)||먼지나 쓰레기를 일부 뱉어냄||1년 이상||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCANLEM1420W||직접입력(10자이내)||자동흡입이 안됩니다 거치대 충전 불가||1년 미만||jenn6167@naver.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCANLEM1420W||직접입력(10자이내)||청소기충전이않됌||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCB1010UG||직접입력(10자이내)||브러쉬 거치대 파손||1개월 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCB1010UG||직접입력(10자이내)||작동이안되다가 혼자됐다가 전원을끌려면||1개월 미만||jjc1530@naver.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCB1010UG||직접입력(10자이내)||파워 2단계 버튼이 안됨||1년 미만||alo_79@commonz.kr",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCB1010UG||직접입력(10자이내)||흡인이 잘안되요||1년 이상||i16a6a@kakao.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCB1020UG||직접입력(10자이내)||1분정도 작동후 꺼짐||1년 이상||crayonjyco@hanmail.net",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCB1020UG||직접입력(10자이내)||먼지를 뱉어내고, 흡입력이 거의 없음||1년 이상||law_damwon@naver.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCDFFEM2530NW||직접입력(10자이내)||스테이션불량.서비스받았는데계속않됨||1년 미만||hanseungju8322@nate.com",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCDFFEM2530NW||직접입력(10자이내)||전원 안꺼짐||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCDFFEM2530NW||직접입력(10자이내)||전원이 꺼지지 않음 ||1년 미만||",
+            "count": 1,
+            "percentage": 0.26
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CVCDFFEM2530NW||직접입력(10자이내)||충전안됨||1개월 미만||",
+            "count": 1,
+            "percentage": 0.26
+          }
+        ]
+      },
+      "공기청정기": {
+        "total_count": 330,
+        "symptoms": [
+          {
+            "symptom": "소음",
+            "count": 2,
+            "percentage": 0.61
+          },
+          {
+            "symptom": "공기청정기 빨간불이 계속 들어옴 AS요청합니다",
+            "count": 2,
+            "percentage": 0.61
+          },
+          {
+            "symptom": "프리필터 깨짐으로 인한 교체요청/ 담당자 010 6771 4259/031 439 7779 입니다",
+            "count": 2,
+            "percentage": 0.61
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC20T10FWH(S)||소음 관련||따따딱 소리가 남||1년 이상||kk29774839@daum.net",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||공기청청기||전체 제품||AC25W10FWS(S)||직접입력(10자이내)||냄새||1년 이상||kongal0110@gmail.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FB||직접입력(10자이내)||디스플레이  오동작||1년 미만||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC12R20FNW||직접입력(10자이내)||공기 표시등 미점등 ||1개월 미만||road-pipe@hanmail.net",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC12R20FNW||직접입력(10자이내)||렌탈 공기청정기 어린이집. 이물질 들||1년 이상||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC12R20FNW||직접입력(10자이내)||사용중 전원이 꺼짐||1개월 미만||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC12R20FNW||직접입력(10자이내)||소음||1년 이상||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC14R20FNW||직접입력(10자이내)||소음, 전면 led불빛 꺼짐 등||1개월 미만||yeranglew88@gmail.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC17T10FWH||직접입력(10자이내)||LED전멸되어 불이 안들어옴||1년 미만||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC17T20FWH||직접입력(10자이내)||계속 빨간불이 나와요||1년 미만||kua02753@naver.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC17T20FWH||직접입력(10자이내)||청소후 전원이 깜빡이구 동작이 안됨||1년 이상||ankd74@naver.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC17TV20FNG||직접입력(10자이내)||소음이있어요 ||1년 이상||elfkmk01@naver.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC23AH10FNW||직접입력(10자이내)||전원재인가동증||1년 미만||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC25W20FHI||직접입력(10자이내)||소리도 안나고 작동이안됨||1년 이상||hy2537@naver.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC25W20FPMO||직접입력(10자이내)||사용하면 냄 나요 몇번 사용안햇는데.||1년 이상||hye-jini@nate.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28AH10FNW||직접입력(10자이내)||필더청소문이안열림||1년 이상||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28AHNL20FNW||직접입력(10자이내)||C2에러 발생||1년 미만||yyj30832@naver.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28AHNL20FNW||직접입력(10자이내)||C2에러발생||1년 미만||yyj30832@kakao.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28AHNL20FNW||직접입력(10자이내)||딱딱거리는 소음||1년 미만||uandyoung@naver.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28AHNL20FNW||직접입력(10자이내)||목탁소리가 다시 납니다.||1년 미만||gw945@hanmail.net",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28W20FWS||직접입력(10자이내)||가동시 소리가남||1년 이상||dock8220@hanmail.net",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28W20FWS||직접입력(10자이내)||또다닥소리납니다제품교체희망||1년 미만||tomastecvoz@gmail.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC28W20FWS||직접입력(10자이내)||주기적 필터 청소 문의||1년 이상||",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC35U20FWS||직접입력(10자이내)||Led 램프가 작동하지 않아요.||1년 이상||gloriahwang21@gmail.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC35U20FWS||직접입력(10자이내)||구매3일 소음발생||1개월 미만||qorrn3612@gmail.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC35U20FWS||직접입력(10자이내)||소음이 있어요||1년 이상||elfkmk01@naver.com",
+            "count": 1,
+            "percentage": 0.3
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||AC35U20FWS||직접입력(10자이내)||작동시 팬돌아가는 소리가 들려요||1개월 미만||dngkdis11@nate.com",
+            "count": 1,
+            "percentage": 0.3
+          }
+        ]
+      },
+      "기타": {
+        "total_count": 346,
+        "symptoms": [
+          {
+            "symptom": "E1.AS접수 CDW-BS1410UWE",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "04.수.CCD-A0310AW,미니건조기.사용중전원나감.전원무.구입한달.유무상",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "3.3.화/쿠팡로켓배송어제수령/무상설치/설치환경에따라추가비용발생될수있음안내 CIR-EP349FGP/4시이후희망",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "3.4.수/비데/노즐작동무/구입1년이상/유상/컨01045723284/모델명은/시간조율시확인가능함",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "3.5.목.쿠팡로켓배송무상설치+@현장상황.어제수령.방문한시간전에꼭연락요청.연락받아야이동할수있다함.빠른연락요청.",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "4.수.쿠팡로켓배송무상설치.추가비용발생안내.CIR-EP349FGP실모델임",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "비데>원수연결밸브에서 누수.원수밸브잠금불.구입1년.자가설치.유/무.모델명확인불.",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "설치/3월5일/빌트인, 제품 매장에서 택배",
+            "count": 2,
+            "percentage": 0.58
+          },
+          {
+            "symptom": "음식물처리기 작동 이상으로 AS요청 컨텍시 010-3351-3806/1182412090006/CFD-C151MONW",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CFDBG202MOG||직접입력(10자이내)||UV램프이상||1년 이상||CFD-BG202MOG",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||기타||CGCBFF201SGW||직접입력(10자이내)||한쪽 점화가 잘 안되요||1개월 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||기타||CMW2310DB2||직접입력(10자이내)||버튼 망가짐||1년 이상||sky3062979@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||기타||KCPKA100||직접입력(10자이내)||CP-ABS100GWH(S)정수기문제||1개월 미만||kkhwan888@kakao.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||기타||KCPKA100||직접입력(10자이내)||정수기 물받이 깨져서 교체 부탁드려요||1년 이상||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||기타||RCP183 WHITE||직접입력(10자이내)||정수기 이물질이 섞여나옴||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||동작 관련||uv램프 문제||1년 이상||CFD-BG202MOG",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||동작 관련||UV램프 에러감지 ||1년 이상||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||동작 관련||모터 돌아가는 소리들리나 동작안함||1년 이상||salesman1130@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||동작 관련||모터에 이상이있다고방송함  9E:ER||1년 이상|CFD-BG202MOG",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||동작 관련||모터이상이라고 합니다 ㆍ작년에 모터교||1년 이상||sg-cosmetic@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||뚜껑부 관련||뚜껑 뒷부분 힌지 파손||1년 미만||jsyun0570@gmail.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||주방가전||음식물처리기||CFDBG202MOG||뚜껑부 관련||뚜껑부 경첩 파손||1년 이상||CFD-BG202MOG",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(챗봇)/렌탈///1년 미만//작동 불능 CFD-EFF201DCNG",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "03.04.수/제품내부패킹에물얼룩부분확인됨/사용흔적있음으로확인후교환요청/2월초구매/시간조율/유무상",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "03.05.목.모델명확인불.10인분.압력.백미취사설익음.반이상은생쌀.자난달NS홈쇼핑구매.구매일자불확실.15시이후방문요청.유무상.",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "03.05.목/밥솥,모델명확인불가,10인용/작동불량/밥이됐다안됐다반복한다고하심,상세확인어려움/기사방문,점검요청/구입1년이상/유상/방문전연락요청",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "03.05.목/인덕션설치요청/15CM프리스탠딩케이스요청/쿠팡구매/오후방문요청/유무상",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "03.06.금/뚜껑안닫힘/구매3년정도/3인용트윈프레셔/모델명확인불/오전방문요청/유상",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "03.06.금/밥솥,모델명확인불가,10인용/취사직후전원꺼짐/기사방문,점검요청/구입1달내외/유무상/방문전연락요청",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "03.06.금/밥솥,모델명확인불가,6인용/소음/보온중,절전상태일때,간헐적으로삐소리들림/기사방문,점검요청/구입1달미만/유무상/방문전연락요청",
+            "count": 1,
+            "percentage": 0.29
+          }
+        ]
+      },
+      "로봇청소기": {
+        "total_count": 343,
+        "symptoms": [
+          {
+            "symptom": "####스테이션 못찾음",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||밥솥||IH전기압력밥솥||CRPLHTR0610FB||직접입력(10자이내)||스테이션 복귀 안됨||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||밥솥||트윈프레셔밥솥||CRPLHTR0610FD||직접입력(10자이내)||동작무||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||가습기||CRVCBFFAC0530NW||직접입력(10자이내)||청소후 물보충할때 물샘||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCAALM10IG||직접입력(10자이내)||충전중이라 정소작동은 하지않||1년 이상||hyekyun@hanmail.net",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCALVM20IGM||직접입력(10자이내)||엔진소리가 이상하고 타는 냄새가 남||1년 이상||jjemma@hanmail.net",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||걸레가 돌지안고 홈스테이에 들어가지함||1년 미만||4821lee@hanmail.net",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||걸레세척시 물이밖으로 전부흘러나옴증상||1년 미만||qkrdlsdhr7717@daum.net",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||공레패드 고장||1년 미만||4821lee@hanmail.net",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||로봇청소기충전안됨||1년 미만||peach7556@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||맵핑을 하였는데도 5분 청소후 종료됨||1개월 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||물걸레세척이안됨||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||물이 바닥에  흐리는쥐 작동안됨||1년 미만||swiri0315@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||스테이션 누수||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||스테이션 혹은 기기 누수 ||1년 미만||ssmye87@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||연결오류, 연결안됨.||1개월 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||전원이  안되어  모든 동작이안됨 ||1년 미만||rhodijss@hanmail.net",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||제품 연결안됨.||1개월 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510NW||직접입력(10자이내)||청소완료후 충전대로 못돌아간다고함||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510W||직접입력(10자이내)||로봇청소기 스테이션복귀 및 물충전오류||1년 미만||nhi9124@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510W||직접입력(10자이내)||소음||1년 미만||bobia7795@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510W||직접입력(10자이내)||시작후 10분도안되종료함||1년 미만||jjh682002@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBAC0510W||직접입력(10자이내)||청소기가동하면 극히일부만하고 끝남, ||1년 미만||jjh682002@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBFFAC0530NW||직접입력(10자이내)||도크를 못찾아감 as 몇번이나받음||1년 이상||hanseungju8322@nate.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBFFAC0530NW||직접입력(10자이내)||도크를 못찾아감,여러차례수리받음||1년 이상||hanseungju8322@nate.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBFFAC0530NW||직접입력(10자이내)||로봇청소기 물이샘||1년 미만||cdpaja1@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBFFAC0530NW||직접입력(10자이내)||로봇청소기가 집을 못찾아간다함. ||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBFFAC0530NW||직접입력(10자이내)||로봇청소기에서  물이샘||1년 미만||Jhs1358@gmail.com",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBFFAC0530NW||직접입력(10자이내)||물이 밑으로 다샘||1년 미만||",
+            "count": 1,
+            "percentage": 0.29
+          },
+          {
+            "symptom": "(온라인)||생활가전||기타||CRVCBFFAC0530NW||직접입력(10자이내)||스테이션 복귀 불가||1년 미만||dmsxo3333@naver.com",
+            "count": 1,
+            "percentage": 0.29
+          }
+        ]
+      }
+    }
+  }
+}
